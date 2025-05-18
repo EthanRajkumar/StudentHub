@@ -5,14 +5,14 @@ Users should be to the most basic functions in a text-based form.
 2nd version:
 Users should now be able to use most 
 available functions that will be added to the system
-and basic user-interface will be implemented.
+and basic user-interface will be implemented.  //I'm assuming this means a text-based menu UI inside the console? -Chris
 3rd version:
 Users should be able to use all promised features
 and new features that were discussed later in development 
 will start to implemented here.
-User-interace will be more developed.
+User-interace will be more developed.  //and this is where we implement the GUI? -Chris
 4th/Final Version:
-All bugs will be fixed.
+All bugs will be fixed.  //I feel like we should fix bugs as they pop up via unit testing, so that development of subsequent components/increments is smoother and issues are easier to track/manage -Chris
 Will implement suggestions/fixes reported by users.
 All promised features will be fully implemented 
 and possibly improved from user data.
