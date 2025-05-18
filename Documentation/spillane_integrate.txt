@@ -1,0 +1,7 @@
+Integrate/Configure Model
+
+Analyze LeopardWeb and other interfaces similar to it to
+Observe what components are needed to implement, configure, revise
+Use components and modify them to fit user needs
+Develop and integrate all components and configure them to fit the system
+Test and validate that the system functions as intended
