@@ -8,6 +8,7 @@ Incremental Process Proposition
 Requirements Engineering
 -----------------------------------------------
 Version 1: Users should be able to log in to their own accounts (users, instructors, and admins), and browse the course catalogue by a variety of factors (CRN, name, or subject). GUI will remain text-based.
+//So would we be implementing the use of a database from the get-go in Version 1? -Chris
 
 Version 2: Users should be able to take advantage of their role-specific actions. Students and instructors will be able to add or drop courses from their own schedule, while admins will be able to edit, create, or delete courses from the catalogue.
 
