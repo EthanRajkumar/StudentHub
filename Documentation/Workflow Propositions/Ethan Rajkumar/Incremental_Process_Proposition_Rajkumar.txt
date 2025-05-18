@@ -1,0 +1,16 @@
+ELEC3225 – Applied Programming Concepts
+LeopardWeb Replication Project
+Ethan Rajkumar
+May 18th, 2025
+
+Incremental Process Proposition
+
+Requirements Engineering
+-----------------------------------------------
+Version 1: Users should be able to log in to their own accounts (users, instructors, and admins), and browse the course catalogue by a variety of factors (CRN, name, or subject). GUI will remain text-based.
+
+Version 2: Users should be able to take advantage of their role-specific actions. Students and instructors will be able to add or drop courses from their own schedule, while admins will be able to edit, create, or delete courses from the catalogue.
+
+Version 3: Admins will be able to see all user profiles, users will have student information stored and available (name, GPA, year, date of birth, ID etc.), instructors will have information stored and available (date of birth, ID, name, etc.). Students adding courses will update the seats available per course, failing if the course is full.
+
+Version 4: All actions will be accessible through an application GUI, including UI-related options if warranted.

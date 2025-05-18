@@ -1,0 +1,19 @@
+ELEC3225 – Applied Programming Concepts
+LeopardWeb Replication Project
+Ethan Rajkumar
+May 18th, 2025
+
+Integrational Process Proposition
+
+Among many framework UI's including Windows Forms, SCiter stnds out as a modern HTML/CSS embedder framework, allowing web-development to coexist with a C++ backend. Using HTML/CSS would complicate the tech stack, but makes creating responsive UI much easier than it's code-based counterparts.
+
+https://sciter.com/
+
+For databases, given that course ELEC 3225 will cover SQL, two options, MySQL and SQLite stand out as popular SQL integration frameworks that are used to store local databases, supporting encryption methods as well for secure storage through third-party libraries such as SQLCipher.
+
+https://www.mysql.com/
+https://sqlite.org/cintro.html
+https://github.com/sqlcipher/sqlcipher
+
+
+

@@ -1,0 +1,60 @@
+ELEC3225 – Applied Programming Concepts
+LeopardWeb Replication Project
+Ethan Rajkumar
+May 18th, 2025
+
+Waterfall Process Proposition
+
+Requirements Engineering
+-----------------------------------------------
+1. Feasibility Study:
+Does the technology exist to built the system?
+
+The system needs classes and objects, a database for holding user / curriculum records, functions to update the database, and a user interface to navigate functionality. These are all available for the project.
+
+As this is an academic project using open-source libraries / software, no budgeting considerations are applicable to the project.
+
+2. Requirements Elicitation:
+Based on the assignment document given at the beginning of the semester, our end product is clearly defined, as well as the technologies we will have access to. On a weekly basis, further documentation including the requirements of each step in the development process will be provided to guide development.
+
+3. Requirements Specification:
+All users should be able to see their own student profile, browse, add, and drop courses, as well as view their own schedule.
+
+All instructors should be able to see their own instructor profile, browse courses, as well as view and edit their own course schedule.
+
+All admins should be able to see their own admin profile as well as student instructor profiles, browse, create, edit, and delete courses from a catalogue, and edit the schedules of instructors and students.
+
+4. Requirements Validation:
+Allows the system’s users to check the system requirements for accuracy. If the client suggests changes, then the specification for step 3 can be modified.
+
+Design and Implementation
+-----------------------------------------------
+1. Architectural Design:
+For our system, the components that will be a part of our system will all be created as classes and objects with functions to integrate with the database, triggered and accepting arguments from the user interface.
+
+2. Interface Design:
+The interface will be built to connect the high-level components identified above, while providing the flexibility to modify database queries and other API calls.
+
+3. Component Design: The components of the system will be built to display on a graphical interface, such as user profiles, course offerings, schedules, etc.
+
+4. Database Design:
+For general users, we will have the following information stored for their profile: date of birth, full name, student statistics (GPA, year, credits, etc.) if applicable, as well as their own string-based ID.
+
+The information for course schedules will be housed in a separate table, including the CRN’s, meetings times, and course names.
+
+The information for a course catalog will be the last table, consisting of their CRN’s. meetings times, instructors, seats available, and name.
+
+Software Validation:
+-----------------------------------------------
+1. Component Testing:
+Component testing will be used to test individual components as they are being built.
+
+2. System Testing:
+System tests will be used to test the system and its pathways. 
+3. Acceptance Testing:
+Acceptance testing will allow the system to be tested with “real” data that covers all edge cases to find errors.
+
+Software Evolution:
+-----------------------------------------------
+The software will be adapted based on any changes to requirements or user feedback as time progresses, as well as bug fixes discovered during the validation or testing phases.
+
