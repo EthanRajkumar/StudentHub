@@ -39,7 +39,7 @@ The interface will be built to connect the high-level components identified abov
 
 4. Database Design:
 For general users, we will have the following information stored for their profile: date of birth, full name, student statistics (GPA, year, credits, etc.) if applicable, as well as their own string-based ID.
-//It didn't occur to me that we could/should include specific student info such as GPA/year/credits as well (duh). The Student class will probably have the most attributes.
+//It didn't occur to me that we could/should include specific student info such as GPA/year/credits as well (duh). The Student class will probably have the most attributes. -Chris
 
 The information for course schedules will be housed in a separate table, including the CRN’s, meetings times, and course names.
 
