@@ -1,0 +1,20 @@
+Incremental Model
+
+1st version:
+Users should be to the most basic functions in a text-based form.
+2nd version:
+Users should now be able to use most 
+available functions that will be added to the system
+and basic user-interface will be implemented.
+3rd version:
+Users should be able to use all promised features
+and new features that were discussed later in development 
+will start to implemented here.
+User-interace will be more developed.
+4th/Final Version:
+All bugs will be fixed.
+Will implement suggestions/fixes reported by users.
+All promised features will be fully implemented 
+and possibly improved from user data.
+
+
