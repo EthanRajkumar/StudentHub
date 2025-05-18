@@ -9,6 +9,8 @@ Among many framework UI's including Windows Forms, SCiter stnds out as a modern 
 
 https://sciter.com/
 
+//Interesting. I don't really have any experience in making GUIs so it'll probably be up to you to decide how we want to implement it -Chris
+
 For databases, given that course ELEC 3225 will cover SQL, two options, MySQL and SQLite stand out as popular SQL integration frameworks that are used to store local databases, supporting encryption methods as well for secure storage through third-party libraries such as SQLCipher.
 
 https://www.mysql.com/
