@@ -13,7 +13,7 @@ This system is inspired from LeopardWeb and will behave similarily to it.
 Therfore the requirements to fufill will similar to LeopardWeb as in...
 Students, Instructors, and Admins will be able to access similar modules but accomplish different things.
 User interface is easy to understand and interact with.
-3. Requirement Specification
+3. Requirement Specification  //we should note that the program will also need a system in which users log in, so that they have access to their profile and thus correct methods/access -Chris
 Student – can register, can see available courses and their own schedule.
 Instructor – can see available courses and their own course roster.
 Admin – can see everything, can edit courses/users/schedules.
@@ -37,7 +37,7 @@ Classes: Student, Admin, Instructor (each has their own object)
 Functions: (differ per class/object) see course, see schedule, see available courses
 see course roster, edit course, edit user, edit schedule.
 User Interface: Modules for similar functions.
-4. Database Design
+4. Database Design  //I think database design can also pertain to the storage of available courses as well -Chris
 First Name, Last Name, ID
 
 |
