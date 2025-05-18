@@ -1,0 +1,29 @@
+First Iteration (Assignment 1)
+-main method, parent class User, child classes Student, Instructor, Admin
+-all User classes (including child classes) have attributes firstname, lastname, ID
+-all classes can print out their attributes
+-empty/print statement void methods for each class as placeholders for future methods
+
+Second Iteration (Login integration)
+-main method programmed to prompt user to log in with ID and password
+-password attributes added to User class + child classes
+-array of different User child objects
+-each login attempt traverses array of User objects for matching ID + password
+-upon successful login, repeating console UI displays menu options/methods based on user's object class
+
+Third Iteration (Course integration)
+-new class Course, attributes time/days/CRN/name/section/instructor/roster
+-add (array?) attribute courselist to Student and Instructor classes
+-array of universal pre-set courses in main method or separate file
+-flesh out all class methods to traverse/interact with courselist attributes and array of courses
+	-User method to sort courselist array into chronological order schedule 
+	-Student can add/drop courses into courselist, search/print courses, print courselist/schedule
+	-Instructor can print courselist/schedule, search courses
+	-Admin can add/remove courses, add/remove students from courses, search/print courses/course rosters, 	 	 add/remove users
+
+Fourth Iteration (Database integration)
+-transition system courses from array in main method to a separate database
+-adjust all affected methods to interface with database instead of deprecated array
+
+Final Iteration (GUI integration)
+-Create connected GUI scenes that interface with main program to carry out all functionalities with visual displays

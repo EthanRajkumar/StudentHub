@@ -1,0 +1,30 @@
+Requirements Definition
+-project is feasible, all resources (IDE, repository, libraries, etc.) should be free/pre-acquired
+-program needs classes (parent + children), libraries, database, GUI
+-analyze and note functionalities/features of LeopardWeb that should be implemented
+-all users should have name + ID
+-students can search/register/unregister for available courses and print/view their own courses
+-instructors can search available courses and print/view their course list and schedule
+-admins can add/remove courses in system, view a user's course list/schedule, view/add/remove users (from system/a course's roster), and search/print courses + course rosters
+-printing/viewing courses should include course name/course number/time/location/instructor
+-printing/viewing of users should include all attributes (first + last names, ID) and the type of user (student/instructor/admin)
+
+Component Analysis
+-Visual Studio/VS Code: create and compile code (course content)
+-SQL Database: create and integrate database for use in program (course content)
+-GUI library/software: gtkmm/Qt/wxWidgets/Dear ImuGui libraries for C++ (https://www.geeksforgeeks.org/cpp-gui-    programming/), SceneBuilder for Java (compsci 2 course content) to create GUI for programd
+-GitHub repository: collaborate on code, commit changes (course content)
+
+
+Requirements Definition
+-project is feasible
+-program classes created inside code within IDE, libraries imported into code, database integrated into program, GUI designed to provide convenient/user-friendly UI
+-analyze and note functionalities/features of LeopardWeb that should be implemented
+-all user structures (attributes, methods) set up in class files
+
+System Design (with reuse)
+-create and compile institutional course menu program code in IDE with all necessary classes and main method logic
+-import necessary libraries into code
+
+Design and Implementation
+-collaborate on code via GitHub repository with team, committing and documenting changes
