@@ -18,6 +18,7 @@ Third Iteration (Course integration)
 -flesh out all class methods to traverse/interact with courselist attributes and array of courses
 	-User method to sort courselist array into chronological order schedule 
 	-Student can add/drop courses into courselist, search/print courses, print courselist/schedule
+	// Will students adding or dropping courses affect the number of available seats? Or will this be added during the database iteration? -Ethan
 	-Instructor can print courselist/schedule, search courses
 	-Admin can add/remove courses, add/remove students from courses, search/print courses/course rosters, 	 	 add/remove users
 
