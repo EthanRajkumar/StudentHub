@@ -18,6 +18,7 @@ System and Software Design
 
 Implementation and Unit Testing
 -code in C++ (or Java)
+//We should try to observe what other systems are using to decide what language we should use. Even Python isn't off the table. -Matthew
 -collaboration via GitHub repository
 -test case(s): create object(s) of each class and run all possible methods in main method for functionality
 
