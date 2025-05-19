@@ -26,6 +26,7 @@ Requirements Definition
 System Design (with reuse)
 -create and compile institutional course menu program code in IDE with all necessary classes and main method logic
 -import necessary libraries into code
+// Where will we store the database? Will it be kept locally, or be hosted via web? Web hosting would open up more security options, at the cost of complicating our tech stack. -Ethan
 
 Design and Implementation
 -collaborate on code via GitHub repository with team, committing and documenting changes
