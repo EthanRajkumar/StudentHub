@@ -5,6 +5,7 @@ Requirements Definition
 -students can search/register/unregister for available courses and print/view their own courses
 -instructors can search available courses and print/view their course list and schedule
 -admins can add/remove courses in system, view a user's course list/schedule, view/add/remove users (from system/a course's roster), and search/print courses + course rosters
+// Assuming usere ID's have to be unique, how can we ensure every ID is unique? Should we create a UUID system, or keep track of how many profils have been created? -Ethan
 -printing/viewing courses should include course name/course number/time/location/instructor
 -printing/viewing of users should include all attributes (first + last names, ID) and the type of user (student/instructor/admin)
 
