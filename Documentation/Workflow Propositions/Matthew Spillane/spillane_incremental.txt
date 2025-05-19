@@ -15,6 +15,6 @@ User-interace will be more developed.  //and this is where we implement the GUI?
 All bugs will be fixed.  //I feel like we should fix bugs as they pop up via unit testing, so that development of subsequent components/increments is smoother and issues are easier to track/manage -Chris
 Will implement suggestions/fixes reported by users.
 All promised features will be fully implemented 
-and possibly improved from user data.
+and possibly improved from user data. // At what point will we collect user data? In between veresions 3 and 4? Will we conduct more testing after all the features are fully developed? -Ethan
 
 
