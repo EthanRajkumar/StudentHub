@@ -2,6 +2,6 @@ Integrate/Configure Model
 
 Analyze LeopardWeb and other interfaces similar to it to
 Observe what components are needed to implement, configure, revise  //I think some components to list here could include potential libraries, SQL Database, and/or the IDE itself -Chris
-Use components and modify them to fit user needs
+Use components and modify them to fit user needs // What kinds of components could we adapt from other interfaces? What would we be better off constructing ourselves? -Ethan
 Develop and integrate all components and configure them to fit the system
 Test and validate that the system functions as intended
