@@ -58,4 +58,4 @@ Acceptance testing will allow the system to be tested with “real” data that 
 Software Evolution:
 -----------------------------------------------
 The software will be adapted based on any changes to requirements or user feedback as time progresses, as well as bug fixes discovered during the validation or testing phases.
-
+//User feedback/data will be something that should be keenly observed as there may be details we've overlooked or modifications that we must make so that the system properly usable -Matthew
