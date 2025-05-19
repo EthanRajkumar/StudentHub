@@ -20,6 +20,7 @@ Requirements Definition
 -project is feasible
 -program classes created inside code within IDE, libraries imported into code, database integrated into program, GUI designed to provide convenient/user-friendly UI
 -analyze and note functionalities/features of LeopardWeb that should be implemented
+//while there are things that we are required to do, from our observations we should see if there are additional elements we wish to implement or if there are ways to implement things easier than we initially thought -Matthew
 -all user structures (attributes, methods) set up in class files
 
 System Design (with reuse)
