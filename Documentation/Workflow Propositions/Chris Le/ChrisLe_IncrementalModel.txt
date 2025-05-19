@@ -27,3 +27,4 @@ Fourth Iteration (Database integration)
 
 Final Iteration (GUI integration)
 -Create connected GUI scenes that interface with main program to carry out all functionalities with visual displays
+//Does this mean everything before hand is all text-based? Or will we have simple GUI (like login?) elements added throughout increments?
