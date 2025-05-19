@@ -35,7 +35,7 @@ Interactable modules that will bring users to different areas, such as courses, 
 3. Component Design
 Classes: Student, Admin, Instructor (each has their own object)
 Functions: (differ per class/object) see course, see schedule, see available courses
-see course roster, edit course, edit user, edit schedule.
+see course roster, edit course, edit user, edit schedule. // Admins should also be able to create and delete any of these objects. -Ethan
 User Interface: Modules for similar functions.
 4. Database Design  //I think database design can also pertain to the storage of available courses as well -Chris
 First Name, Last Name, ID
