@@ -9,10 +9,25 @@ public class Main {
         // connection string
         var url = "jdbc:sqlite:Data/assignment3.db";
 
+        //new table Course
+        var courses = "CREATE TABLE IF NOT EXISTS COURSE ("
+                + " CRN INTEGER PRIMARY KEY,"
+                + " title txt NOT NULL,"
+                + " department txt NOT NULL,"
+                + " time txt NOT NULL,"
+                + " days txt NOT NULL,"
+                + " semesters txt NOT NULL,"
+                + " year INTEGER NOT NULL,"
+                + " credits INTEGER NOT NULL,"
+                + " seats INTEGER NOT NULL"
+                + ");";
+
         try (var conn = DriverManager.getConnection(url)) {
             Statement statement = conn.createStatement();
             System.out.println("Connection to SQLite has been established.");
             ResultSet rs = statement.executeQuery("SELECT * FROM STUDENT");
+
+            statement.execute(courses);
 
 /*
             statement.executeUpdate("INSERT INTO STUDENT VALUES (10011, 'Ethan', 'Rajkumar', 2026, 'BSCO', 'rajkumare@wit.edu');"); //Add student Ethan
