@@ -1,5 +1,5 @@
 public class Instructor extends User {
-	public Instructor(String first_name, String last_name, String id)
+	public Instructor(String first_name, String last_name, String id, String title, int year_of_hire, int department, String email)
 	{
 		super(first_name, last_name, id);
 	}

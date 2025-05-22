@@ -1,5 +1,5 @@
 public class Admin extends User {
-	public Admin(String first_name, String last_name, String id)
+	public Admin(String first_name, String last_name, String id, String title, String office, String email)
 	{
 		super(first_name, last_name, id);
 	}
