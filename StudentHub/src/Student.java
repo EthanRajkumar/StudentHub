@@ -1,10 +1,14 @@
 public class Student extends User {
-	
-	public Student(String first_name, String last_name, String id, int expected_grad_year, String major, String email)
-	{
+	int expected_grad_year;
+	String major, email;
+
+	public Student(String first_name, String last_name, String id, int in_expected_grad_year, String in_major, String in_email) {
 		super(first_name, last_name, id);
+		expected_grad_year = in_expected_grad_year;
+        major = in_major;
+		email = in_email;
 	}
-	
+
 	public void SearchClass(int classID)
 	{
 		System.out.println("Successfully searched for class ID " + classID + ".");
