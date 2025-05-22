@@ -1,7 +1,12 @@
 public class Admin extends User {
-	public Admin(String first_name, String last_name, String id, String title, String office, String email)
+	String title, office, email;
+
+	public Admin(String first_name, String last_name, String id, String in_title, String in_office, String in_email)
 	{
 		super(first_name, last_name, id);
+		title = in_title;
+		office = in_office;
+		email = in_email;
 	}
 	
 	public void CreateCourse(int classID)
