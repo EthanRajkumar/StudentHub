@@ -10,6 +10,26 @@ public class Instructor extends User {
 		department = in_department;
 		email = in_email;
 	}
+
+	public int GetYearOfHire()
+	{
+		return year_of_hire;
+	}
+
+	public String GetTitle()
+	{
+		return title;
+	}
+
+	public String GetDepartment()
+	{
+		return department;
+	}
+
+	public String GetEmail()
+	{
+		return email;
+	}
 	
 	public void SearchClass(int classID)
 	{

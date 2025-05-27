@@ -1,4 +1,4 @@
-public class User {
+public abstract class User {
 	String first_name, last_name, id;
 	
 	public User(String firstName, String lastName, String ID)
@@ -6,6 +6,21 @@ public class User {
 		first_name = firstName;
 		last_name = lastName;
 		id = ID;
+	}
+
+	public String GetFirstName()
+	{
+		return first_name;
+	}
+
+	public String GetLastName()
+	{
+		return last_name;
+	}
+
+	public String GetID()
+	{
+		return id;
 	}
 	
 	public void SetFirstName(String firstName)

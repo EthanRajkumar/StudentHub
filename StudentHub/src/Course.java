@@ -15,4 +15,71 @@ public class Course {
         seats = in_seats;
     }
 
+    public String GetTitle() {
+        return title;
+    }
+
+    public String GetDepartment() {
+        return department;
+    }
+
+    public String GetTime() {
+        return time;
+    }
+
+    public String[] GetDays() {
+        return days;
+    }
+
+    public String[] GetSemesters() {
+        return semesters;
+    }
+
+    public int GetCRN() {
+        return CRN;
+    }
+
+    public int GetYear() {
+        return year;
+    }
+
+    public int GetCredits() {
+        return credits;
+    }
+
+    public int GetSeats() {
+        return seats;
+    }
+
+    public void SetTitle(String in_title) {
+        title = in_title;
+    }
+
+    public void SetDepartment(String in_department) {
+        department = in_department;
+    }
+
+    public void SetTime(String in_time) {
+        time = in_time;
+    }
+
+    public void SetDays(String[] in_days) {
+        days = in_days;
+    }
+
+    public void SetSemesters(String[] in_semesters) {
+        semesters = in_semesters;
+    }
+
+    public void SetYear(int in_year) {
+        year = in_year;
+    }
+
+    public void SetCredits(int in_crn) {
+        CRN = in_crn;
+    }
+
+    public void SetSeats(int in_seats) {
+        CRN = in_seats;
+    }
 }

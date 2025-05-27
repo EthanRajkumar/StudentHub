@@ -8,6 +8,21 @@ public class Admin extends User {
 		office = in_office;
 		email = in_email;
 	}
+
+	public String GetTitle()
+	{
+		return title;
+	}
+
+	public String GetOffice()
+	{
+		return office;
+	}
+
+	public String GetEmail()
+	{
+		return email;
+	}
 	
 	public void CreateCourse(int classID)
 	{

@@ -9,6 +9,21 @@ public class Student extends User {
 		email = in_email;
 	}
 
+	public int GetGraduationYear()
+	{
+		return expected_grad_year;
+	}
+
+	public String GetMajor()
+	{
+		return major;
+	}
+
+	public String GetEmail()
+	{
+		return email;
+	}
+
 	public void SearchClass(int classID)
 	{
 		System.out.println("Successfully searched for class ID " + classID + ".");
