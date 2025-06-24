@@ -23,15 +23,50 @@ public class SqlSerializer {
                     major = rs.getString("MAJOR"),
                     email = rs.getString("EMAIL");
 
-            int gradYear = 0;//rs.getInt("GRADYEAR");
+            int gradYear = rs.getInt("GRADYEAR");
 
             return new Student(name, surname, id, gradYear, major, email);
         } catch (SQLException e) {
-            System.out.println("Error parsing Student object.");
+            System.out.println("Error parsing Student object. " + e);
             return null;
         }
     }
 
+    public static Instructor InstructorFromSql(ResultSet rs)
+    {
+        try {
+            String name = rs.getString("NAME"),
+                    surname = rs.getString("SURNAME"),
+                    id = rs.getString("ID"),
+                    title = rs.getString("TITLE"),
+                    major = rs.getString("DEPT"),
+                    email = rs.getString("EMAIL");
+
+            int yearOfHire = rs.getInt("HIREYEAR");
+
+            return new Instructor(name, surname, id, title, yearOfHire, major, email);
+        } catch (SQLException e) {
+            System.out.println("Error parsing Instructor object. " + e);
+            return null;
+        }
+    }
+
+    public static Admin AdminFromSql(ResultSet rs)
+    {
+        try {
+            String name = rs.getString("NAME"),
+                    surname = rs.getString("SURNAME"),
+                    id = rs.getString("ID"),
+                    title = rs.getString("TITLE"),
+                    office = rs.getString("OFFICE"),
+                    email = rs.getString("EMAIL");
+
+            return new Admin(name, surname, id, title, office, email);
+        } catch (SQLException e) {
+            System.out.println("Error parsing Admin object. " + e);
+            return null;
+        }
+    }
 
     public static String InstructorToSql(Instructor instructor, String tableName) {
         String sp = ", ";
