@@ -239,7 +239,7 @@ public class Admin extends User {
 					continue;
 				case 0:
 					if (!doneName || !doneID || !doneDept || !doneTime || !doneSemesters || !doneYear || !doneDays || !doneCred || !doneSeats) {
-						System.out.println("Not all parameters of the course were set; please go back and finish");
+						System.out.println("Not all attributes of the course were set; please go back and finish");
 					}
 					else {
 						active = false;
@@ -261,9 +261,150 @@ public class Admin extends User {
 		System.out.println("Successfully removed class ID " + classID + ".");
 	}
 	
-	public void CreateUser(String first_name, String last_name, String id)
+	public void CreateUser()
 	{
-		System.out.println("Successfully created user " + first_name + " " + last_name + ", ID: " + id + ".");
+		//System.out.println("Successfully created user " + first_name + " " + last_name + ", ID: " + id + ".");
+		String fName = ""; String lName = ""; String id = ""; String email = "";
+		boolean fNameDone = false; boolean lNameDone = false; boolean idDone = false; boolean emailDone = false;
+		boolean active = true;
+		Scanner reader = new Scanner(System.in);
+		int userSelect = 0;
+		while (true) {
+			System.out.println("Select a type of user to create: \n1: Student\n2: Instructor");
+			userSelect = reader.nextInt();
+			reader.nextLine();
+			if (userSelect == 1 || userSelect == 2) {
+				break;
+			}
+		}
+		if (userSelect == 1) {
+			System.out.println("Creating new Student");
+			int expectedGradYear = 0; String major = "";					//attributes exclusive to Student
+			boolean expectedGradYearDone = false; boolean majorDone = false;
+			int studentMenu;
+			while (active) {
+				System.out.println("Select an attribute of the new Student to edit: \n1: First name\n2: Last name\n3: ID\n" +
+						"4: Expected Graduation Year\n5: Major\n6: Email\n0: Done");
+				studentMenu = reader.nextInt();
+				reader.nextLine();
+				switch (studentMenu){
+					case 1:
+						System.out.println("Enter first name of this student: ");
+						fName = reader.nextLine();
+						fNameDone = true;
+						continue;
+					case 2:
+						System.out.println("Enter last name of this student: ");
+						lName = reader.nextLine();
+						lNameDone = true;
+						continue;
+					case 3:
+						System.out.println("Enter ID of this student: ");
+						id = reader.nextLine();
+						idDone = true;
+						continue;
+					case 4:
+						System.out.println("Enter the student's expected year of graduation: ");
+						expectedGradYear = reader.nextInt();
+						reader.nextLine();
+						expectedGradYearDone = true;
+						continue;
+					case 5:
+						System.out.println("Enter major of this student: ");
+						major = reader.nextLine();
+						majorDone = true;
+						continue;
+					case 6:
+						System.out.println("Enter institutional email of this student: ");
+						email = reader.nextLine();
+						emailDone = true;
+						continue;
+					case 0:
+						if (!fNameDone || !lNameDone || !idDone || !expectedGradYearDone || !majorDone || !emailDone) {
+							System.out.println("Not all attributes of the student were set; please go back and finish");
+							continue;
+						}
+						else {
+							active = false;
+							break;
+						}
+					default:
+						continue;
+				}
+				Student newStudent = new Student(fName, lName, id, expectedGradYear, major, email);
+				System.out.println("Creating student:\nFirst name: " + fName + "\nLast name: " + lName + "\nID: " + id +
+						"\nExpected Year of Graduation: " + expectedGradYear + "\nMajor: " + major + "\nEmail: " + email);
+				break;
+			}
+		}
+		else {
+			System.out.println("Creating new Instructor");
+			String title = ""; int yearOfHire = 0; String department = "";	//attributes exclusive to Instructor
+			boolean titleDone = false; boolean yearOfHireDone = false; boolean departmentDone = false;
+			int instructorMenu;
+			while (active) {
+				System.out.println("Select an attribute of the new Student to edit: \n1: First name\n2: Last name\n3: ID\n" +
+						"4: Title\n5: Year of Hire\n6: Department\n7: Email\n0: Done");
+				instructorMenu = reader.nextInt();
+				reader.nextLine();
+				switch (instructorMenu){
+					case 1:
+						System.out.println("Enter first name of this instructor: ");
+						fName = reader.nextLine();
+						fNameDone = true;
+						continue;
+					case 2:
+						System.out.println("Enter last name of this instructor: ");
+						lName = reader.nextLine();
+						lNameDone = true;
+						continue;
+					case 3:
+						System.out.println("Enter ID of this instructor: ");
+						id = reader.nextLine();
+						idDone = true;
+						continue;
+					case 4:
+						System.out.println("Enter the title of this instructor");
+						title = reader.nextLine();
+						titleDone = true;
+						continue;
+					case 5:
+						System.out.println("Enter the instructors's year of hire: ");
+						yearOfHire = reader.nextInt();
+						reader.nextLine();
+						yearOfHireDone = true;
+						continue;
+					case 6:
+						System.out.println("Enter department of this instructor");
+						department = reader.nextLine();
+						departmentDone = true;
+						continue;
+					case 7:
+						System.out.println("Enter institutional email of this instructor: ");
+						email = reader.nextLine();
+						emailDone = true;
+						continue;
+					case 0:
+						if (!fNameDone || !lNameDone || !idDone || !titleDone || !yearOfHireDone || !departmentDone || !emailDone) {
+							System.out.println("Not all attributes of the instructor were set; please go back and finish");
+							continue;
+						}
+						else {
+							active = false;
+							break;
+						}
+					default:
+						continue;
+				}
+				Instructor newInstructor = new Instructor(fName, lName, id, title, yearOfHire, department,email);
+				System.out.println("Creating instructor:\nFirst name: " + fName + "\nLast name: " + lName + "\nID: " + id +
+						"\nTitle: " + title + "\nYear of Hire: " + yearOfHire + "\nDepartment: " + department + "\nEmail: " + email);
+				break;
+			}
+
+		}
+
+
 	}
 	
 	public void DeleteUser(String id)
