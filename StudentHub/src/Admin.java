@@ -1,6 +1,11 @@
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Arrays;
 import java.util.Scanner;
+//import java.sql.ResultSetMetaData;
 
 public class Admin extends User {
 	String title, office, email;
@@ -412,14 +417,129 @@ public class Admin extends User {
 		System.out.println("Successfully deleted user ID: " + id + ".");
 	}
 	
-	public void AddStudentToCourse(String studentID, int courseID)
+	public void AddStudentToCourse()
 	{
-		System.out.println("Successfully added student ID: " + studentID + " to course ID: " + courseID + ".");
+		//System.out.println("Successfully added student ID: " + studentID + " to course ID: " + courseID + ".");
+		System.out.println("Add student to course selected...");
+		Scanner reader = new Scanner(System.in);
+		int courseID;
+
+		//Print all courses
+		var url = "jdbc:sqlite:Data/assignment3.db";
+		SqlExecuter.OpenDatabase(url);
+
+		String query = "SELECT * FROM COURSE";
+		ResultSet rs = SqlExecuter.RunQuery(url, query);
+
+		try (var conn = DriverManager.getConnection(url)) {
+			//Statement statement = conn.createStatement();
+			//System.out.println("Connection to SQLite has been established.");
+			//ResultSet rs = statement.executeQuery("SELECT * FROM COURSE");
+
+			while (rs.next()) {
+				SqlSerializer.CourseFromSql(rs).PrintAll();
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		System.out.println("Enter the course ID of the course you'd like to add a student to: ");
+		courseID = reader.nextInt();
+		reader.nextLine();
+
 	}
 	
-	public void RemoveStudentFromCourse(String studentID, int courseID)
+	public void RemoveStudentFromCourse()
 	{
-		System.out.println("Successfully removed student ID: " + studentID + " from course ID: " + courseID + ".");
+		//System.out.println("Successfully removed student ID: " + studentID + " from course ID: " + courseID + ".");
+		System.out.println("Remove student from course selected...");
+		Scanner reader = new Scanner(System.in);
+		int courseID;
+
+		//Print all courses
+		var url = "jdbc:sqlite:Data/assignment3.db";
+		SqlExecuter.OpenDatabase(url);
+
+		String query = "SELECT * FROM COURSE";
+		ResultSet rs = SqlExecuter.RunQuery(url, query);
+
+		try (var conn = DriverManager.getConnection(url)) {
+			//Statement statement = conn.createStatement();
+			//System.out.println("Connection to SQLite has been established.");
+			//ResultSet rs = statement.executeQuery("SELECT * FROM COURSE");
+
+			while (rs.next()) {
+				SqlSerializer.CourseFromSql(rs).PrintAll();
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		System.out.println("Enter the course ID of the course you'd like to remove a student from: ");
+		courseID = reader.nextInt();
+		reader.nextLine();
+	}
+
+	public void LinkInstructorToCourse() {
+		System.out.println("Link instructor to course selected...");
+		Scanner reader = new Scanner(System.in);
+		int courseID;
+
+		//Print all courses
+		var url = "jdbc:sqlite:Data/assignment3.db";
+		SqlExecuter.OpenDatabase(url);
+
+		String query = "SELECT * FROM COURSE";
+		ResultSet rs = SqlExecuter.RunQuery(url, query);
+
+		try (var conn = DriverManager.getConnection(url)) {
+			//Statement statement = conn.createStatement();
+			//System.out.println("Connection to SQLite has been established.");
+			//ResultSet rs = statement.executeQuery("SELECT * FROM COURSE");
+
+			while (rs.next()) {
+				SqlSerializer.CourseFromSql(rs).PrintAll();
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		System.out.println("Enter the course ID of the course you'd like to link an instructor to: ");
+		courseID = reader.nextInt();
+		reader.nextLine();
+	}
+
+	public void UnlinkInstructorFromCourse() {
+		System.out.println("Unlink instructor from course selected...");
+		Scanner reader = new Scanner(System.in);
+		int courseID;
+
+		//Print all courses
+		var url = "jdbc:sqlite:Data/assignment3.db";
+		SqlExecuter.OpenDatabase(url);
+
+		String query = "SELECT * FROM COURSE";
+		ResultSet rs = SqlExecuter.RunQuery(url, query);
+
+		try (var conn = DriverManager.getConnection(url)) {
+			//Statement statement = conn.createStatement();
+			//System.out.println("Connection to SQLite has been established.");
+			//ResultSet rs = statement.executeQuery("SELECT * FROM COURSE");
+
+			while (rs.next()) {
+				SqlSerializer.CourseFromSql(rs).PrintAll();
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		System.out.println("Enter the course ID of the course you'd like to unlink an instructor from: ");
+		courseID = reader.nextInt();
+		reader.nextLine();
 	}
 	
 	public void SearchClass(int classID)

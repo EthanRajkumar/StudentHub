@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Course {
     String title, department;
     String[] days, semesters;
@@ -81,5 +83,10 @@ public class Course {
 
     public void SetSeats(int in_seats) {
         CRN = in_seats;
+    }
+
+    public void PrintAll() {
+        System.out.println("ID: " + CRN + " Title: " + title + " Department: " + department + " Time: " + time + " Days: " +
+                Arrays.toString(days) + " Semesters: " + Arrays.toString(semesters) + " Year: " + year + " Credits: " + credits + " Seats:" + seats);
     }
 }

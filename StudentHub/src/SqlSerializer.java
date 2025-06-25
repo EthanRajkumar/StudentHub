@@ -113,4 +113,24 @@ public class SqlSerializer {
                 course.GetCredits() + sp +
                 course.GetSeats() + ");";
     }
+
+    public static Course CourseFromSql(ResultSet rs)
+    {
+        try {
+            int id = Integer.parseInt(rs.getString("CRN"));
+            String title = rs.getString("TITLE");
+            String department = rs.getString("DEPARTMENT");
+            int time = Integer.parseInt(rs.getString("TIME"));
+            String[] days = new String[]{rs.getString("DAYS")},
+                    semesters = new String[]{rs.getString("SEMESTERS")};
+            int year = Integer.parseInt(rs.getString("YEAR")),
+                    credits = Integer.parseInt(rs.getString("CREDITS")),
+                    seats = Integer.parseInt(rs.getString("SEATS"));
+
+            return new Course(title, department, id, time, days, semesters, year, credits, seats);
+        } catch (SQLException e) {
+            System.out.println("Error parsing Course object. " + e);
+            return null;
+        }
+    }
 }
