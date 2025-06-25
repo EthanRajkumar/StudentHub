@@ -1,9 +1,9 @@
 public class Course {
-    String title, department, time;
+    String title, department;
     String[] days, semesters;
-    int CRN, year, credits, seats;
+    int CRN, year, credits, seats, time;
 
-    public Course (String in_title,  String in_department, int in_CRN, String in_time, String[] in_days, String[] in_semesters, int in_year, int in_credits, int in_seats){
+    public Course (String in_title,  String in_department, int in_CRN, int in_time, String[] in_days, String[] in_semesters, int in_year, int in_credits, int in_seats){
         title = in_title;
         department = in_department;
         CRN = in_CRN;
@@ -23,7 +23,7 @@ public class Course {
         return department;
     }
 
-    public String GetTime() {
+    public int GetTime() {
         return time;
     }
 
@@ -59,7 +59,7 @@ public class Course {
         department = in_department;
     }
 
-    public void SetTime(String in_time) {
+    public void SetTime(int in_time) {
         time = in_time;
     }
 
