@@ -48,7 +48,7 @@ public abstract class User {
 	}
 
 	//copied from Instructor so that Student and Admin can also use function
-	public static void SearchClassbyParam()
+	public static void SearchCoursebyParam()
 	{
 		// title, department, semester, year
 		var url = "jdbc:sqlite:Data/assignment3.db";

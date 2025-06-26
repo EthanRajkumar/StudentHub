@@ -37,7 +37,7 @@ public class Instructor extends User {
 		return email;
 	}
 	
-	public static void SearchClassbyDept()
+	public static void SearchCoursebyDept()
 	{
 		var url = "jdbc:sqlite:Data/assignment3.db";
 		Scanner scanner = new Scanner(System.in);
@@ -60,7 +60,7 @@ public class Instructor extends User {
 		}
 	}
 
-	public static void SearchClassbyParam()
+	public static void SearchCoursebyParam()
 	{
 		// title, department, semester, year
 		var url = "jdbc:sqlite:Data/assignment3.db";
@@ -143,19 +143,79 @@ public class Instructor extends User {
 		}
 	}
 	
-	public void PrintClassList()
+	public void PrintCourseRoster()
 	{
-
-
+		var url = "jdbc:sqlite:Data/assignment3.db";
+		ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE INSTRUCTOR = '" + id + "';");
+		String query2 = "";
+		try {
+			while (rs.next()) {
+				String students = (rs.getString("STUDENTS"));
+				String[] studentArray = students.split(" ");
+				System.out.println("Course: " + rs.getString("TITLE"));
+				for(int i = 0; i < studentArray.length; i++) {
+					query2 = "SELECT * FROM STUDENT WHERE ID = '" + studentArray[i] + "';";
+					ResultSet rs2 = SqlExecuter.RunQuery(url, query2);
+					while(rs2.next()) {
+						System.out.println("Student: " + rs2.getString("NAME") + " ID: " + rs2.getString("ID"));
+					}
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("Database error: " + e.getMessage());
+		}
 	}
+
 
 	public void SearchCourseRoster()
 	{
+		var url = "jdbc:sqlite:Data/assignment3.db";
+		ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE INSTRUCTOR = '" + id + "';");
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("What course do you want to search through?");
+		String course = scanner.nextLine();
+		System.out.println("What student do you wish to search for? (Type in format first_name' 'last_name)");
+		String user_student = scanner.nextLine();
+		String[] students_name = user_student.split(" ");
+		String first_name = students_name[0];
+		String last_name = students_name[1];
+		String query2 = "";
+
+		try {
+			while (rs.next()) {
+				System.out.println("Course: " + rs.getString("TITLE"));
+				query2 = "SELECT ID FROM STUDENT WHERE NAME = '" + first_name + "' AND SURNAME = '" + last_name + "';";
+				ResultSet rs2 = SqlExecuter.RunQuery(url, query2);
+				boolean found = false;
+
+				while(rs2.next()) {
+					found = true;
+					System.out.println("Student: " + first_name + " " + last_name + " was found.");
+				}
+
+				if(!found) {
+					System.out.println("Student: " + first_name + " " + last_name + " was not found.");
+				}
+
+			}
+		} catch (SQLException e) {
+			System.out.println("Database error: " + e.getMessage());
+		}
 
 	}
 	
-	public void PrintSchedule()
+	public void PrintTeachingSchedule()
 	{
-
+		var url = "jdbc:sqlite:Data/assignment3.db";
+		ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE INSTRUCTOR = '" + id + "';");
+		try {
+			while (rs.next()) {
+				System.out.println("Here is your schedule!");
+				System.out.println("Course: " + rs.getString("TITLE") + " Time: " + rs.getString("TIME"));
+			}
+		} catch (SQLException e) {
+		System.out.println("Database error: " + e.getMessage());
+		}
 	}
+
 }
