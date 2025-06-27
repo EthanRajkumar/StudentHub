@@ -47,6 +47,29 @@ public abstract class User {
 		System.out.println("User: " + first_name + " " + last_name + ", ID: " + id);
 	}
 
+	public static void SearchCoursebyDept()
+	{
+		var url = "jdbc:sqlite:Data/assignment3.db";
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("What is the department of the course you're looking for?");
+		String user_dept = scanner.nextLine();
+		while(!user_dept.equals("BSEE") && !user_dept.equals("BSCO") && !user_dept.equals("BCOS") && !user_dept.equals("HUSS") && !user_dept.equals("BSAS")) {
+			System.out.println("That is not a valid department, try again.");
+			System.out.println("What is the dept of the course you're looking for?");
+			user_dept = scanner.nextLine();
+		}
+		ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE DEPARTMENT = '" + user_dept + "';");
+		try {
+			while (rs.next())
+			{
+				System.out.println("Department: " + rs.getString("DEPARTMENT") + " Course: " + rs.getString("TITLE") + " Year: " + rs.getInt("YEAR"));
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	//copied from Instructor so that Student and Admin can also use function
 	public static void SearchCoursebyParam()
 	{

@@ -70,14 +70,14 @@ public class SqlSerializer {
 
     public static String InstructorToSql(Instructor instructor, String tableName) {
         String sp = ", ";
-        return "INSERT INTO INSTRUCTORS VALUES (" +
-                instructor.GetID() + sp +
-                instructor.GetFirstName() + sp +
-                instructor.GetLastName() + sp +
-                instructor.GetTitle() + sp +
+        return "INSERT INTO INSTRUCTORS VALUES ('" +
+                instructor.GetID() + "'" + sp +
+                "'" + instructor.GetFirstName() + "'" + sp +
+                "'" + instructor.GetLastName() + "'" + sp +
+                "'" + instructor.GetTitle() + "'" + sp +
                 instructor.GetYearOfHire() + sp +
-                instructor.GetDepartment() + sp +
-                instructor.GetEmail() + ");";
+                "'" + instructor.GetDepartment() + "'" + sp +
+                "'" + instructor.GetEmail() + "');";
     }
 
     public static String AdminToSql(Admin admin, String tableName) {
@@ -92,26 +92,36 @@ public class SqlSerializer {
     }
 
     public static String CourseToSql(Course course, String tableName) {
-        String sp = ", ";
-        StringBuilder days_string = new StringBuilder(), semesters_string = new StringBuilder();
+        String sp = ", ", days_string = "", semesters_string = "";
         String[] days = course.GetDays(), semesters = course.GetSemesters();
 
-        for (String day : days)
-            days_string.append(day);
+        for (String day : days) {
+            if (day == "")
+                continue;
 
-        for (String semester : semesters)
-            semesters_string.append(semester);
+            days_string += (day + " ");
+        }
 
-        return "INSERT INTO COURSES VALUES (" +
+        days_string.trim();
+
+        for (String semester : semesters) {
+            if (semester == "")
+                continue;
+            semesters_string += (semester + " ");
+        }
+
+        semesters_string.trim();
+
+        return "INSERT INTO COURSE VALUES (" +
                 course.GetCRN() + sp +
-                course.GetTitle() + sp +
-                course.GetDepartment() + sp +
+                "'" + course.GetTitle() + "'" + sp +
+                "'" + course.GetDepartment() + "'" + sp +
                 course.GetTime() + sp +
-                days_string + sp +
-                semesters_string + sp +
+                "'" + days_string + "'" + sp +
+                "'" + semesters_string + "'" + sp +
                 course.GetYear() + sp +
                 course.GetCredits() + sp +
-                course.GetSeats() + ");";
+                course.GetSeats() + sp + "'', '');";
     }
 
     public static Course CourseFromSql(ResultSet rs)
