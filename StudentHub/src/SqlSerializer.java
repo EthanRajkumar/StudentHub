@@ -111,7 +111,7 @@ public class SqlSerializer {
                 "'" + semesters_string + "'" + sp +
                 course.GetYear() + sp +
                 course.GetCredits() + sp +
-                course.GetSeats() + "'', '');";
+                course.GetSeats() + sp + "'', '');";
     }
 
     public static Course CourseFromSql(ResultSet rs)
