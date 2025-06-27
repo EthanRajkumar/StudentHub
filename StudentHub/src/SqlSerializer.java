@@ -70,14 +70,14 @@ public class SqlSerializer {
 
     public static String InstructorToSql(Instructor instructor, String tableName) {
         String sp = ", ";
-        return "INSERT INTO INSTRUCTORS VALUES (" +
-                instructor.GetID() + sp +
-                instructor.GetFirstName() + sp +
-                instructor.GetLastName() + sp +
-                instructor.GetTitle() + sp +
+        return "INSERT INTO INSTRUCTORS VALUES ('" +
+                instructor.GetID() + "'" + sp +
+                "'" + instructor.GetFirstName() + "'" + sp +
+                "'" + instructor.GetLastName() + "'" + sp +
+                "'" + instructor.GetTitle() + "'" + sp +
                 instructor.GetYearOfHire() + sp +
-                instructor.GetDepartment() + sp +
-                instructor.GetEmail() + ");";
+                "'" + instructor.GetDepartment() + "'" + sp +
+                "'" + instructor.GetEmail() + "');";
     }
 
     public static String AdminToSql(Admin admin, String tableName) {
@@ -97,21 +97,21 @@ public class SqlSerializer {
         String[] days = course.GetDays(), semesters = course.GetSemesters();
 
         for (String day : days)
-            days_string.append(day);
+            days_string.append((day + " "));
 
         for (String semester : semesters)
-            semesters_string.append(semester);
+            semesters_string.append((semester + " "));
 
         return "INSERT INTO COURSES VALUES (" +
                 course.GetCRN() + sp +
-                course.GetTitle() + sp +
-                course.GetDepartment() + sp +
+                "'" + course.GetTitle() + "'" + sp +
+                "'" + course.GetDepartment() + "'" + sp +
                 course.GetTime() + sp +
-                days_string + sp +
-                semesters_string + sp +
+                "'" + days_string + "'" + sp +
+                "'" + semesters_string + "'" + sp +
                 course.GetYear() + sp +
                 course.GetCredits() + sp +
-                course.GetSeats() + ");";
+                course.GetSeats() + "'', '');";
     }
 
     public static Course CourseFromSql(ResultSet rs)
