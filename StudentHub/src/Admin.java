@@ -34,6 +34,7 @@ public class Admin extends User {
 	}
 	
 	public void CreateCourse() {
+		var url = "jdbc:sqlite:Data/assignment3.db";
 		//System.out.println("Successfully created class ID " + classID + ".");
 		System.out.println("Successfully called CreateCourse function");
 		int CRN = 0; String courseName = ""; String courseDept = ""; int time = 0; String[] days = new String[]{"", "", "", "", "", "", ""}; String[] semesters = new String[]{"", "", "", ""};
@@ -256,7 +257,8 @@ public class Admin extends User {
 			}
 		}
 		Course newCourse = new Course(courseName, courseDept, CRN, time, days, semesters, year, cred, seats);
-		SqlSerializer.CourseToSql(newCourse,"COURSE");
+		String update = SqlSerializer.CourseToSql(newCourse,"COURSE");
+		SqlExecuter.RunUpdate(url, update);
 		System.out.println("Course created: \nName: " + newCourse.GetTitle() + "\nDepartment: " + newCourse.GetDepartment() + "\nCourse ID: " + newCourse.GetCRN()
 		+ "\nTime: " + newCourse.GetTime() + "\nDays: " + Arrays.toString(newCourse.GetDays()) + "\nSemesters: " + Arrays.toString(newCourse.GetSemesters()) +
 				"\nYear: " + newCourse.GetYear() + "\nCredits: " + newCourse.GetCredits() + "\nSeats: " + newCourse.GetSeats());
@@ -532,10 +534,9 @@ public class Admin extends User {
 		try {
 			while (rs.next()) {
 				String students = (rs.getString("STUDENTS"));
-				String instructor = (rs.getString("INSTRUCTOR"));
 				String[] studentArray = students.split(" ");
 				System.out.println("Course: " + rs.getString("TITLE"));
-				//System.out.println("Instructor: " + );
+				System.out.println("Instructor: " + rs.getString("INSTRUCTOR"));
 				for(int i = 0; i < studentArray.length; i++) {
 					query2 = "SELECT * FROM STUDENT WHERE ID = '" + studentArray[i] + "';";
 					ResultSet rs2 = SqlExecuter.RunQuery(url, query2);
