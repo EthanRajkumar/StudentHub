@@ -82,7 +82,7 @@ public class SqlSerializer {
 
     public static String AdminToSql(Admin admin, String tableName) {
         String sp = ", ";
-        return "INSERT INTO ADMINS VALUES (" +
+        return "INSERT INTO ADMIN VALUES (" +
                 "'" + admin.GetID() + "'" + sp +
                 "'" + admin.GetFirstName() + "'" + sp +
                 "'" + admin.GetLastName() + "'" + sp +
