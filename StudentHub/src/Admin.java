@@ -256,6 +256,7 @@ public class Admin extends User {
 			}
 		}
 		Course newCourse = new Course(courseName, courseDept, CRN, time, days, semesters, year, cred, seats);
+		SqlSerializer.CourseToSql(newCourse,"COURSE");
 		System.out.println("Course created: \nName: " + newCourse.GetTitle() + "\nDepartment: " + newCourse.GetDepartment() + "\nCourse ID: " + newCourse.GetCRN()
 		+ "\nTime: " + newCourse.GetTime() + "\nDays: " + Arrays.toString(newCourse.GetDays()) + "\nSemesters: " + Arrays.toString(newCourse.GetSemesters()) +
 				"\nYear: " + newCourse.GetYear() + "\nCredits: " + newCourse.GetCredits() + "\nSeats: " + newCourse.GetSeats());
@@ -527,11 +528,14 @@ public class Admin extends User {
 		var url = "jdbc:sqlite:Data/assignment3.db";
 		ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE CRN = '" + courseID + "';");
 		String query2 = "";
+		String query3 = "";
 		try {
 			while (rs.next()) {
 				String students = (rs.getString("STUDENTS"));
+				String instructor = (rs.getString("INSTRUCTOR"));
 				String[] studentArray = students.split(" ");
 				System.out.println("Course: " + rs.getString("TITLE"));
+				//System.out.println("Instructor: " + );
 				for(int i = 0; i < studentArray.length; i++) {
 					query2 = "SELECT * FROM STUDENT WHERE ID = '" + studentArray[i] + "';";
 					ResultSet rs2 = SqlExecuter.RunQuery(url, query2);
