@@ -417,12 +417,12 @@ public class Admin extends User {
 		System.out.println("Successfully deleted user ID: " + id + ".");
 	}
 	
-	public void AddStudentToCourse()
-	{
+	public void AddStudentToCourse() throws SQLException {
 		//System.out.println("Successfully added student ID: " + studentID + " to course ID: " + courseID + ".");
 		System.out.println("Add student to course selected...");
 		Scanner reader = new Scanner(System.in);
 		int courseID;
+		String studentID;
 
 		PrintAllCourses();
 
@@ -432,14 +432,31 @@ public class Admin extends User {
 
 		PrintCourseRoster(courseID);
 
-	}
+		System.out.println("Enter the ID of the student you'd like to add to this course: ");
+		studentID = reader.nextLine();
+
+		var url = "jdbc:sqlite:Data/assignment3.db";
+		String query = "SELECT STUDENTS FROM COURSE";
+		ResultSet rs = SqlExecuter.RunQuery(url, query);
+		String students = rs.getString("STUDENTS");
+		String[] studentArray = students.split(" ");
+        String update;
+        if (studentArray[0].isBlank()) {
+            update = "UPDATE COURSE SET STUDENTS = STUDENTS ||" + "'" + studentID + "'" + " WHERE CRN = " + courseID;
+        }
+		else {
+            update = "UPDATE COURSE SET STUDENTS = STUDENTS ||" + "' " + studentID + "'" + " WHERE CRN = " + courseID;
+        }
+        SqlExecuter.RunUpdate(url, update);
+
+    }
 	
-	public void RemoveStudentFromCourse()
-	{
+	public void RemoveStudentFromCourse() throws SQLException {
 		//System.out.println("Successfully removed student ID: " + studentID + " from course ID: " + courseID + ".");
 		System.out.println("Remove student from course selected...");
 		Scanner reader = new Scanner(System.in);
 		int courseID;
+		String studentID;
 
 		PrintAllCourses();
 
@@ -448,6 +465,25 @@ public class Admin extends User {
 		reader.nextLine();
 
 		PrintCourseRoster(courseID);
+		System.out.println("Enter the ID of the student you'd like to remove from this course: ");
+		studentID = reader.nextLine();
+
+		var url = "jdbc:sqlite:Data/assignment3.db";
+		String query = "SELECT STUDENTS FROM COURSE";
+		ResultSet rs = SqlExecuter.RunQuery(url, query);
+		String students = rs.getString("STUDENTS");
+		//String[] studentArray = students.split(" ");
+		String update;
+
+		if (!students.contains(studentID) || students.isBlank()) {
+			System.out.println("Entered user ID is not registered under this course; roster unchanged");
+		}
+
+		students = students.replace(studentID, "");
+		update = "UPDATE COURSE SET STUDENTS = " + "'" + students + "'" + " WHERE CRN = " + courseID;
+
+		SqlExecuter.RunUpdate(url, update);
+
 
 	}
 
@@ -504,6 +540,7 @@ public class Admin extends User {
 					}
 				}
 			}
+
 		} catch (SQLException e) {
 			System.out.println("Database error: " + e.getMessage());
 		}
