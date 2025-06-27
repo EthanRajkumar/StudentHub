@@ -271,6 +271,7 @@ public class Admin extends User {
 	
 	public void CreateUser()
 	{
+		var url = "jdbc:sqlite:Data/assignment3.db";
 		//System.out.println("Successfully created user " + first_name + " " + last_name + ", ID: " + id + ".");
 		String fName = ""; String lName = ""; String id = ""; String email = "";
 		boolean fNameDone = false; boolean lNameDone = false; boolean idDone = false; boolean emailDone = false;
@@ -340,6 +341,8 @@ public class Admin extends User {
 						continue;
 				}
 				Student newStudent = new Student(fName, lName, id, expectedGradYear, major, email);
+				String update = SqlSerializer.StudentToSql(newStudent,"STUDENT");
+				SqlExecuter.RunUpdate(url, update);
 				System.out.println("Creating student:\nFirst name: " + fName + "\nLast name: " + lName + "\nID: " + id +
 						"\nExpected Year of Graduation: " + expectedGradYear + "\nMajor: " + major + "\nEmail: " + email);
 				break;
@@ -405,6 +408,8 @@ public class Admin extends User {
 						continue;
 				}
 				Instructor newInstructor = new Instructor(fName, lName, id, title, yearOfHire, department,email);
+				String update = SqlSerializer.InstructorToSql(newInstructor,"COURSE");
+				SqlExecuter.RunUpdate(url, update);
 				System.out.println("Creating instructor:\nFirst name: " + fName + "\nLast name: " + lName + "\nID: " + id +
 						"\nTitle: " + title + "\nYear of Hire: " + yearOfHire + "\nDepartment: " + department + "\nEmail: " + email);
 				break;
@@ -483,6 +488,7 @@ public class Admin extends User {
 		}
 
 		students = students.replace(studentID, "");
+		students = students.replace(studentID + " ", "");
 		update = "UPDATE COURSE SET STUDENTS = " + "'" + students + "'" + " WHERE CRN = " + courseID;
 
 		SqlExecuter.RunUpdate(url, update);
