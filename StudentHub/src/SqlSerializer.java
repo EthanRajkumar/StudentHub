@@ -6,12 +6,12 @@ public class SqlSerializer {
     public static String StudentToSql(Student student, String tableName) {
         String sp = ", ";
         return "INSERT INTO STUDENTS VALUES (" +
-                student.GetID() + sp +
-                student.GetFirstName() + sp +
-                student.GetLastName() + sp +
+                "'" + student.GetID() + "'" + sp +
+                "'" + student.GetFirstName() + "'" + sp +
+                "'" + student.GetLastName() + "'" + sp +
                 student.GetGraduationYear() + sp +
-                student.GetMajor() + sp +
-                student.GetEmail() + ");";
+                "'" + student.GetMajor() + "'" + sp +
+                "'" + student.GetEmail() + "');";
     }
 
     public static Student StudentFromSql(ResultSet rs)
@@ -83,12 +83,12 @@ public class SqlSerializer {
     public static String AdminToSql(Admin admin, String tableName) {
         String sp = ", ";
         return "INSERT INTO ADMINS VALUES (" +
-                admin.GetID() + sp +
-                admin.GetFirstName() + sp +
-                admin.GetLastName() + sp +
-                admin.GetTitle() + sp +
-                admin.GetOffice() + sp +
-                admin.GetEmail() + ");";
+                "'" + admin.GetID() + "'" + sp +
+                "'" + admin.GetFirstName() + "'" + sp +
+                "'" + admin.GetLastName() + "'" + sp +
+                "'" + admin.GetTitle() + "'" + sp +
+                "'" + admin.GetOffice() + "'" + sp +
+                "'" + admin.GetEmail() + "');";
     }
 
     public static String CourseToSql(Course course, String tableName) {
