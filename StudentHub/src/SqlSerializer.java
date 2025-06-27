@@ -92,15 +92,25 @@ public class SqlSerializer {
     }
 
     public static String CourseToSql(Course course, String tableName) {
-        String sp = ", ";
-        StringBuilder days_string = new StringBuilder(), semesters_string = new StringBuilder();
+        String sp = ", ", days_string = "", semesters_string = "";
         String[] days = course.GetDays(), semesters = course.GetSemesters();
 
-        for (String day : days)
-            days_string.append((day + " "));
+        for (String day : days) {
+            if (day == "")
+                continue;
 
-        for (String semester : semesters)
-            semesters_string.append((semester + " "));
+            days_string += (day + " ");
+        }
+
+        days_string.trim();
+
+        for (String semester : semesters) {
+            if (semester == "")
+                continue;
+            semesters_string += (semester + " ");
+        }
+
+        semesters_string.trim();
 
         return "INSERT INTO COURSE VALUES (" +
                 course.GetCRN() + sp +
