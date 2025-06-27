@@ -5,7 +5,7 @@ import java.util.Locale;
 public class SqlSerializer {
     public static String StudentToSql(Student student, String tableName) {
         String sp = ", ";
-        return "INSERT INTO STUDENTS VALUES (" +
+        return "INSERT INTO STUDENT VALUES (" +
                 "'" + student.GetID() + "'" + sp +
                 "'" + student.GetFirstName() + "'" + sp +
                 "'" + student.GetLastName() + "'" + sp +
@@ -70,7 +70,7 @@ public class SqlSerializer {
 
     public static String InstructorToSql(Instructor instructor, String tableName) {
         String sp = ", ";
-        return "INSERT INTO INSTRUCTORS VALUES ('" +
+        return "INSERT INTO INSTRUCTOR VALUES ('" +
                 instructor.GetID() + "'" + sp +
                 "'" + instructor.GetFirstName() + "'" + sp +
                 "'" + instructor.GetLastName() + "'" + sp +
