@@ -102,7 +102,7 @@ public class SqlSerializer {
         for (String semester : semesters)
             semesters_string.append((semester + " "));
 
-        return "INSERT INTO COURSES VALUES (" +
+        return "INSERT INTO COURSE VALUES (" +
                 course.GetCRN() + sp +
                 "'" + course.GetTitle() + "'" + sp +
                 "'" + course.GetDepartment() + "'" + sp +
