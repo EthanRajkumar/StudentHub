@@ -170,10 +170,10 @@ public class Instructor extends User {
 	public void SearchCourseRoster()
 	{
 		var url = "jdbc:sqlite:Data/assignment3.db";
-		ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE INSTRUCTOR = '" + id + "';");
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("What course do you want to search through?");
 		String course = scanner.nextLine();
+		ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE INSTRUCTOR = '" + id + "' AND TITLE = '" + course + "';");
 		System.out.println("What student do you wish to search for? (Type in format first_name' 'last_name)");
 		String user_student = scanner.nextLine();
 		String[] students_name = user_student.split(" ");
@@ -182,6 +182,7 @@ public class Instructor extends User {
 		String query2 = "";
 
 		try {
+			System.out.println("Course is '" + course + "'.");
 			while (rs.next()) {
 				System.out.println("Course: " + rs.getString("TITLE"));
 				query2 = "SELECT ID FROM STUDENT WHERE NAME = '" + first_name + "' AND SURNAME = '" + last_name + "';";
@@ -209,8 +210,8 @@ public class Instructor extends User {
 		var url = "jdbc:sqlite:Data/assignment3.db";
 		ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE INSTRUCTOR = '" + id + "';");
 		try {
+			System.out.println("Here is your schedule!");
 			while (rs.next()) {
-				System.out.println("Here is your schedule!");
 				System.out.println("Course: " + rs.getString("TITLE") + " Time: " + rs.getString("TIME"));
 			}
 		} catch (SQLException e) {
