@@ -48,7 +48,7 @@ public class Student extends User {
 		{
 			String students = rs.getString("STUDENTS");
 
-			if (students.contains(id)) {
+			if (students != null && students.contains(id)) {
 				System.out.println("You are already enrolled in this course.");
 				return false;
 			}
