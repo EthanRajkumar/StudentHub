@@ -500,6 +500,7 @@ public class Admin extends User {
 		System.out.println("Link instructor to course selected...");
 		Scanner reader = new Scanner(System.in);
 		int courseID;
+		String instructorID;
 
 		PrintAllCourses();
 
@@ -508,6 +509,14 @@ public class Admin extends User {
 		reader.nextLine();
 
 		PrintCourseRoster(courseID);
+
+		System.out.println("Enter the ID of the instructor you'd like to link to this course (if there is an instructor already linked, they will be overwritten)");
+		instructorID = reader.nextLine();
+
+		var url = "jdbc:sqlite:Data/assignment3.db";
+		String update = "UPDATE COURSE SET INSTRUCTOR = '" + instructorID + "'" + " WHERE CRN = " + courseID;
+		SqlExecuter.RunUpdate(url, update);
+
 
 	}
 
@@ -524,6 +533,21 @@ public class Admin extends User {
 
 		PrintCourseRoster(courseID);
 
+		int confirm;
+		System.out.println("Unlink instructor from this course? (Yes=1, No=0)");
+		confirm = reader.nextInt();
+		reader.nextLine();
+
+		if (confirm == 1) {
+			var url = "jdbc:sqlite:Data/assignment3.db";
+			String update = "UPDATE COURSE SET INSTRUCTOR = ''" + " WHERE CRN = " + courseID;
+			SqlExecuter.RunUpdate(url, update);
+			System.out.println("Instructor unlinked");
+		}
+		else {
+			System.out.println("Instructor was not unlinked");
+		}
+
 	}
 	
 	public void SearchClass(int classID)
@@ -536,13 +560,16 @@ public class Admin extends User {
 		var url = "jdbc:sqlite:Data/assignment3.db";
 		ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE CRN = '" + courseID + "';");
 		String query2 = "";
-		String query3 = "";
 		try {
 			while (rs.next()) {
 				String students = (rs.getString("STUDENTS"));
 				String[] studentArray = students.split(" ");
 				System.out.println("Course: " + rs.getString("TITLE"));
-				System.out.println("Instructor: " + rs.getString("INSTRUCTOR"));
+				//System.out.println("Instructor: " + rs.getString("INSTRUCTOR"));
+				String instructor = rs.getString("INSTRUCTOR");
+				String query1 = "SELECT * FROM INSTRUCTOR WHERE ID = '" + instructor + "';";
+				ResultSet rs1 = SqlExecuter.RunQuery(url, query1);
+				System.out.println("Instructor: " + rs1.getString("NAME") + " " + rs1.getString("SURNAME") + " ID: " + rs1.getString("ID"));
 				for(int i = 0; i < studentArray.length; i++) {
 					query2 = "SELECT * FROM STUDENT WHERE ID = '" + studentArray[i] + "';";
 					ResultSet rs2 = SqlExecuter.RunQuery(url, query2);
