@@ -171,36 +171,61 @@ public class Instructor extends User {
 	{
 		var url = "jdbc:sqlite:Data/assignment3.db";
 		Scanner scanner = new Scanner(System.in);
+
 		System.out.println("What course do you want to search through?");
 		String course = scanner.nextLine();
 		ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE INSTRUCTOR = '" + id + "' AND TITLE = '" + course + "';");
-		System.out.println("What student do you wish to search for? (Type in format first_name' 'last_name)");
-		String user_student = scanner.nextLine();
-		String[] students_name = user_student.split(" ");
-		String first_name = students_name[0];
-		String last_name = students_name[1];
-		String query2 = "";
+
+		boolean courseTaught = false;
 
 		try {
-			System.out.println("Course is '" + course + "'.");
-			while (rs.next()) {
-				System.out.println("Course: " + rs.getString("TITLE"));
-				query2 = "SELECT ID FROM STUDENT WHERE NAME = '" + first_name + "' AND SURNAME = '" + last_name + "';";
-				ResultSet rs2 = SqlExecuter.RunQuery(url, query2);
-				boolean found = false;
 
-				while(rs2.next()) {
-					found = true;
-					System.out.println("Student: " + first_name + " " + last_name + " was found.");
+			while (rs.next()) {
+				courseTaught = true;
+
+				System.out.println("What student do you wish to search for? (Type in format first_name' 'last_name)");
+				String user_student = scanner.nextLine();
+				String[] students_name = user_student.split(" ");
+				String first_name = students_name[0];
+				String last_name = students_name[1];
+
+				System.out.println("Course: " + rs.getString("TITLE"));
+
+				String getStudents = rs.getString("STUDENTS");
+				String[] studentsID = getStudents.split(" ");
+
+				String query2 = "SELECT ID FROM STUDENT WHERE NAME = '" + first_name + "' AND SURNAME = '" + last_name + "';";
+				ResultSet rs2 = SqlExecuter.RunQuery(url, query2);
+
+				String studentID = "";
+				if (rs2.next()) {
+					studentID = rs2.getString("ID");
+				} else {
+					System.out.println("Student does not exist.");
 				}
 
-				if(!found) {
-					System.out.println("Student: " + first_name + " " + last_name + " was not found.");
+				boolean found = false;
+				if (studentID != "") {
+					for (int i = 0; i < studentsID.length; i++) {
+						if (studentsID[i].equals(studentID)) {
+							found = true;
+							break;
+						}
+					}
+					if (found) {
+						System.out.println("Student: " + first_name + " " + last_name + " is enrolled in the course.");
+					} else {
+						System.out.println("Student: " + first_name + " " + last_name + " is NOT enrolled in the course.");
+					}
 				}
 
 			}
 		} catch (SQLException e) {
 			System.out.println("Database error: " + e.getMessage());
+		}
+
+		if(!courseTaught) {
+			System.out.println("You do not teach this course or this course does not exist.");
 		}
 
 	}
