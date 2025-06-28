@@ -174,7 +174,9 @@ public class Student extends User {
 				return false;
 			}
 
-			students = students.replace(id.toString(), "");
+			students = students.replace(id, "");
+			students = students.replace(id + " ", "");
+			students = students.trim();
 
 			query = "UPDATE COURSE SET STUDENTS = '" + students + "' WHERE TITLE = '" + title + "';";
 			SqlExecuter.RunUpdate("", query);

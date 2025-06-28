@@ -6,45 +6,18 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void SQLMode() {
+    public static void main(String[] args) {
         // Opens the connection to assignment3.db
         var url = "jdbc:sqlite:Data/assignment3.db";
         SqlExecuter.OpenDatabase(url);
 
+        // Sets the password of all users to their email (for debug purposes)
+        Debug.ResetPasswords();
 
-
-        String vera_query = ("SELECT * FROM ADMIN WHERE ID = '30002'");
-        ResultSet verars = SqlExecuter.RunQuery(url, vera_query);
-        Admin Vera = SqlSerializer.AdminFromSql(verars);
-
-        Vera.LinkInstructorToCourse();
-
-        // Creates a SQL query
-        String query = "SELECT * FROM ADMIN";
-
-        // Populates a SQL resultSet containing all search results
-        ResultSet rs = SqlExecuter.RunQuery(url, query);
-
-        try {
-            // For every entry found...
-            while (rs.next()) {
-                // Turn it into an Admin object and print its information
-                SqlSerializer.AdminFromSql(rs).PrintAll();
-
-                // Code for other classes (requires a SQL statement querying the relevant table):
-                // SqlSerializer.StudentFromSql(rs).PrintAll();
-                // SqlSerializer.InstructorFromSql(rs).PrintAll();
-            }
-        } catch (SQLException e) {
-            // If we have an error, print it to the console
-            System.out.println(e);
-        }
+        // Runs the user interface of the program
+        TextInterface.Start();
 
         // Close the database connection
         SqlExecuter.CloseDatabase();
-    }
-
-    public static void main(String[] args) {
-        SQLMode();
     }
 }
