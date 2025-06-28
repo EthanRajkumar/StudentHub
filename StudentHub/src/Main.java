@@ -11,6 +11,14 @@ public class Main {
         var url = "jdbc:sqlite:Data/assignment3.db";
         SqlExecuter.OpenDatabase(url);
 
+
+
+        String vera_query = ("SELECT * FROM ADMIN WHERE ID = '30002'");
+        ResultSet verars = SqlExecuter.RunQuery(url, vera_query);
+        Admin Vera = SqlSerializer.AdminFromSql(verars);
+
+        Vera.LinkInstructorToCourse();
+
         // Creates a SQL query
         String query = "SELECT * FROM ADMIN";
 
