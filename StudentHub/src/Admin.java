@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 //import java.sql.ResultSetMetaData;
 
+//User responsible for Admin functionality is Chris Le
 public class Admin extends User {
 	String title, office, email;
 

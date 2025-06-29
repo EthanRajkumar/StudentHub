@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+//User responsible for Instructor functionality is Matthew Spillane
 public class Instructor extends User {
 	int year_of_hire;
 	String title, department, email;
@@ -215,7 +216,7 @@ public class Instructor extends User {
 					if (found) {
 						System.out.println("Student: " + first_name + " " + last_name + " is enrolled in the course.");
 					} else {
-						System.out.println("Student: " + first_name + " " + last_name + " is NOT enrolled in the course.");
+						System.out.println("Student: " + first_name + " " + last_name + " is not enrolled in the course.");
 					}
 				}
 

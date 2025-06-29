@@ -3,6 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+//User responsible for Student functionality is Ethan Rajkumar
 public class Student extends User {
 	int expected_grad_year;
 	String major, email;
@@ -13,6 +14,7 @@ public class Student extends User {
         major = in_major;
 		email = in_email;
 	}
+
 
 	public int GetGraduationYear()
 	{
@@ -156,6 +158,7 @@ public class Student extends User {
 		return false;
 	}
 
+
 	public boolean RemoveClass()
 	{
 		Scanner scanner = new Scanner(System.in);
@@ -217,3 +220,4 @@ public class Student extends User {
 			System.out.println("[Schedule is empty]");
 	}
 }
+

@@ -47,6 +47,7 @@ public abstract class User {
 		System.out.println("User: " + first_name + " " + last_name + ", ID: " + id);
 	}
 
+	//copied from Instructor so that Student and Admin can also use function
 	public static void SearchCoursebyDept()
 	{
 		var url = "jdbc:sqlite:Data/assignment3.db";
