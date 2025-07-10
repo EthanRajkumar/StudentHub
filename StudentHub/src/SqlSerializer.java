@@ -102,7 +102,7 @@ public class SqlSerializer {
             days_string += (day + " ");
         }
 
-        days_string.trim();
+        days_string = days_string.trim();
 
         for (String semester : semesters) {
             if (semester == "")
@@ -110,7 +110,7 @@ public class SqlSerializer {
             semesters_string += (semester + " ");
         }
 
-        semesters_string.trim();
+        semesters_string = semesters_string.trim();
 
         return "INSERT INTO COURSE VALUES (" +
                 course.GetCRN() + sp +

@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.sqlite.SQLiteConnection;
+
 import static org.mockito.Mockito.*;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -16,10 +18,8 @@ class AdminTest {
 
     @BeforeEach
     void setup() throws Exception {
-        originalSystemIn = System.in;   //stores original System.in
         conn = DriverManager.getConnection(url);
-        try (Statement statement = conn.createStatement()) {
-            statement.execute("CREATE TABLE IF NOT EXISTS COURSE ("
+        conn.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS COURSE ("
                      + "CRN INTEGER PRIMARY KEY,"
                      + " TITLE txt NOT NULL,"
                      + " DEPARTMENT txt NOT NULL,"
@@ -28,40 +28,32 @@ class AdminTest {
                      + " SEMESTERS txt NOT NULL,"
                      + " YEAR INTEGER NOT NULL,"
                      + " CREDITS INTEGER NOT NULL,"
-                     + " SEATS INTEGER NOT NULL"
+                     + " SEATS INTEGER NOT NULL,"
+                     + " INSTRUCTOR txt, STUDENTS txt"
                      + ");");
-            statement.executeUpdate("DELETE FROM COURSE");
-        }
-
-
+        conn.createStatement().executeUpdate("DELETE FROM COURSE");
     }
 
     @AfterEach
     void takeDown() throws Exception {
         System.setIn(originalSystemIn); //restores original System.in
-        if (conn != null) {
-            conn.close();
-        }
+        SqlExecuter.CloseDatabase();
     }
 
     @Test
     void CreateCourse() throws SQLException {
-        SqlExecuter.OpenDatabase(url);
-
         String simulatedInput = "1\nTest Cases 101\n2\nBSCO\n3\n77777\n4\n12301315\n5\n2\n4\n0\n6\n2\n0\n7\n2025\n8\n3\n9\n20\n0\n";    //user input to be simulated
         ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
         System.setIn(testInputStream);  //set System.in as byte array
 
         Admin tester = new Admin("", "", "", "", "", "");
 
-        //Connection conn = DriverManager.getConnection(url);
-        Statement statement = conn.createStatement();
-        tester.CreateCourse();
+        tester.CreateCourse(conn);
 
         //statement.executeUpdate("INSERT INTO COURSE VALUES (77777, 'tEST CASE 101', 'BSCO', 17381738, 'Monday Wednesday', 'Summer', 2025, 3, 20);");
 
-        ResultSet rs = statement.executeQuery("SELECT CRN, TITLE, DEPARTMENT, TIME, DAYS, SEMESTERS, YEAR, CREDITS, SEATS FROM COURSE WHERE CRN = 77777");
-        //assertTrue(rs.next());
+        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM COURSE WHERE CRN = 77777;");
+
         System.out.println(rs.getInt("CRN"));
         System.out.println(rs.getString("TITLE"));
         System.out.println(rs.getString("DEPARTMENT"));
@@ -81,7 +73,6 @@ class AdminTest {
         assertEquals(2025, rs.getInt("YEAR"));
         assertEquals(3, rs.getInt("CREDITS"));
         assertEquals(20, rs.getInt("SEATS"));
-
     }
 
     @Test

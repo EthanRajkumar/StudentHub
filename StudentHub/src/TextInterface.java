@@ -199,7 +199,7 @@ public class TextInterface {
                             break;
                         }
                         case 3: {
-                            admin.CreateCourse();
+                            admin.CreateCourse(SqlExecuter.SQLConnection);
                             break;
                         }
 

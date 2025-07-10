@@ -1,8 +1,5 @@
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Arrays;
 import java.util.Scanner;
 //import java.sql.ResultSetMetaData;
@@ -34,8 +31,8 @@ public class Admin extends User {
 		return email;
 	}
 	
-	public void CreateCourse() {
-		var url = "jdbc:sqlite:Data/assignment3.db";
+	public void CreateCourse(Connection connection) {
+		//var url = "jdbc:sqlite:Data/assignment3.db";
 		//System.out.println("Successfully created class ID " + classID + ".");
 		System.out.println("Successfully called CreateCourse function");
 		int CRN = 0; String courseName = ""; String courseDept = ""; int time = 0; String[] days = new String[]{"", "", "", "", "", "", ""}; String[] semesters = new String[]{"", "", "", ""};
@@ -259,7 +256,12 @@ public class Admin extends User {
 		}
 		Course newCourse = new Course(courseName, courseDept, CRN, time, days, semesters, year, cred, seats);
 		String update = SqlSerializer.CourseToSql(newCourse,"COURSE");
-		SqlExecuter.RunUpdate(url, update);
+		try {
+			connection.createStatement().executeUpdate(update);
+		}
+		catch (SQLException e) {
+			System.out.println(e);
+		}
 		System.out.println("Course created: \nName: " + newCourse.GetTitle() + "\nDepartment: " + newCourse.GetDepartment() + "\nCourse ID: " + newCourse.GetCRN()
 		+ "\nTime: " + newCourse.GetTime() + "\nDays: " + Arrays.toString(newCourse.GetDays()) + "\nSemesters: " + Arrays.toString(newCourse.GetSemesters()) +
 				"\nYear: " + newCourse.GetYear() + "\nCredits: " + newCourse.GetCredits() + "\nSeats: " + newCourse.GetSeats());
