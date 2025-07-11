@@ -18,6 +18,7 @@ class AdminTest {
 
     @BeforeEach
     void setup() throws Exception {
+        originalSystemIn = System.in;   //store original System.in
         conn = DriverManager.getConnection(url);
         conn.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS COURSE ("
                      + "CRN INTEGER PRIMARY KEY,"
