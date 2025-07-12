@@ -147,13 +147,24 @@ public class Instructor extends User {
 	public void PrintCourseRoster()
 	{
 		var url = "jdbc:sqlite:Data/assignment3.db";
-		ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE INSTRUCTOR = '" + id + "';");
+		Scanner scanner = new Scanner(System.in);
+
+		boolean courseTaught = false;
+
+		System.out.println("Which course would you like to print the roster for?");
+		String courseSelected = scanner.nextLine();
+
+		ResultSet course_rs =  SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE INSTRUCTOR = '" + id + "' AND TITLE = '" + courseSelected + "';");
+
+		//ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE INSTRUCTOR = '" + id + "';");
 		String query2 = "";
+
 		try {
-			while (rs.next()) {
-				String students = (rs.getString("STUDENTS"));
+			while (course_rs.next()) {
+				courseTaught = true;
+				String students = (course_rs.getString("STUDENTS"));
 				String[] studentArray = students.split(" ");
-				System.out.println("Course: " + rs.getString("TITLE"));
+				System.out.println("Course: " + course_rs.getString("TITLE"));
 				for(int i = 0; i < studentArray.length; i++) {
 					query2 = "SELECT * FROM STUDENT WHERE ID = '" + studentArray[i] + "';";
 					ResultSet rs2 = SqlExecuter.RunQuery(url, query2);
@@ -162,6 +173,12 @@ public class Instructor extends User {
 					}
 				}
 			}
+
+			if(!courseTaught) {
+				System.out.println("That course does not exist or you do not teach this course.");
+			}
+
+
 		} catch (SQLException e) {
 			System.out.println("Database error: " + e.getMessage());
 		}
