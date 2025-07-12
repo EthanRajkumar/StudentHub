@@ -134,7 +134,7 @@ class AdminTest {
     }
 
     @Test
-    void DeleteCourse_Success() throws SQLException {
+    void DeleteCourse_Exists() throws SQLException {
         String simulatedInput = "50000\n";    //user input to be simulated
         ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
         System.setIn(testInputStream);  //set System.in as byte array
@@ -146,5 +146,34 @@ class AdminTest {
         ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE CRN = 50000");
         assertTrue(!rs.next());
 
+    }
+
+    @Test
+    void DeleteCourse_NotExists() throws SQLException {
+        String simulatedInput = "11111\n";   //user input to be simulated
+        ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
+        System.setIn(testInputStream);  //set System.in as byte array
+
+        // Create an output stream we can read programmatically
+        testOutputStream = new ByteArrayOutputStream();
+        PrintStream origOut = System.out;
+        System.setOut(new PrintStream(testOutputStream));
+
+        Admin tester = new Admin("", "", "", "", "", "");   //create admin to call on function
+
+        tester.DeleteCourse();
+
+        // Restore original System.out
+        System.setOut(origOut);
+        // Compile the output into a readable string
+        String lines = testOutputStream.toString();
+        // Print the output (for reference and debugging)
+        System.out.println(lines);
+
+        // The message we're looking for
+        String errorMsg = "Course with this ID does not exist";
+
+        // Test if we came across the message when running the simulated user input
+        assertEquals(true, lines.contains(errorMsg));
     }
 }
