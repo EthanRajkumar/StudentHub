@@ -34,7 +34,7 @@ class AdminTest {
         SqlExecuter.RunUpdate(url, "CREATE TABLE IF NOT EXISTS COURSE (CRN INTEGER PRIMARY KEY, TITLE txt NOT NULL, " +
                 "DEPARTMENT txt NOT NULL, TIME INTEGER NOT NULL, DAYS txt NOT NULL, SEMESTERS txt NOT NULL, YEAR INTEGER NOT NULL, " +
                 "CREDITS INTEGER NOT NULL, SEATS INTEGER NOT NULL, INSTRUCTOR txt, STUDENTS txt);");
-        SqlExecuter.RunUpdate(url, "DELETE FROM COURSE");
+        SqlExecuter.RunUpdate(url, "DELETE FROM COURSE;");
         // Insert a sample course used to detect conflictions
         SqlExecuter.RunUpdate(url, "INSERT INTO COURSE VALUES (50000, 'Circuit Theory', 'BSEE', 9301015, 'Monday, Wednesday, Friday', " +
                 "'Spring, Summer', 2025, 4, 40, '', '');");
