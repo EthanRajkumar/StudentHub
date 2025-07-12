@@ -31,7 +31,7 @@ public class Admin extends User {
 		return email;
 	}
 	
-	public void CreateCourse(Connection connection) {
+	public void CreateCourse() {
 		//var url = "jdbc:sqlite:Data/assignment3.db";
 		//System.out.println("Successfully created class ID " + classID + ".");
 		System.out.println("Successfully called CreateCourse function");
@@ -256,12 +256,7 @@ public class Admin extends User {
 		}
 		Course newCourse = new Course(courseName, courseDept, CRN, time, days, semesters, year, cred, seats);
 		String update = SqlSerializer.CourseToSql(newCourse,"COURSE");
-		try {
-			connection.createStatement().executeUpdate(update);
-		}
-		catch (SQLException e) {
-			System.out.println(e);
-		}
+		SqlExecuter.RunUpdate("", update);
 		System.out.println("Course created: \nName: " + newCourse.GetTitle() + "\nDepartment: " + newCourse.GetDepartment() + "\nCourse ID: " + newCourse.GetCRN()
 		+ "\nTime: " + newCourse.GetTime() + "\nDays: " + Arrays.toString(newCourse.GetDays()) + "\nSemesters: " + Arrays.toString(newCourse.GetSemesters()) +
 				"\nYear: " + newCourse.GetYear() + "\nCredits: " + newCourse.GetCredits() + "\nSeats: " + newCourse.GetSeats());
