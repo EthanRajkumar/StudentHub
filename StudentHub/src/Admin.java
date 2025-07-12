@@ -262,8 +262,7 @@ public class Admin extends User {
 				"\nYear: " + newCourse.GetYear() + "\nCredits: " + newCourse.GetCredits() + "\nSeats: " + newCourse.GetSeats());
 	}
 	
-	public void DeleteCourse()
-	{
+	public void DeleteCourse() throws SQLException {
 		System.out.println("Successfully called CreateCourse function");
 		Scanner reader = new Scanner(System.in);
 		int removeID;
@@ -271,10 +270,15 @@ public class Admin extends User {
 		System.out.println("Enter the course ID of the course you would like to remove: ");
 		removeID = reader.nextInt();
 		reader.nextLine();
-		String update = "DELETE FROM COURSE WHERE CRN = " + removeID;
-		SqlExecuter.RunUpdate("",update);
-		System.out.println("Course ID " + removeID + " has been removed");
-
+		ResultSet rs = SqlExecuter.RunQuery("", "SELECT * FROM COURSE WHERE CRN = " + removeID);
+		if (rs.next()) {
+			String update = "DELETE FROM COURSE WHERE CRN = " + removeID;
+			SqlExecuter.RunUpdate("",update);
+			System.out.println("Course ID " + removeID + " has been removed");
+		}
+		else {
+			System.out.println("Course with this ID does not exist");
+		}
 	}
 	
 	public void CreateUser()
