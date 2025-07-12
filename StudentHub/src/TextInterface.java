@@ -185,6 +185,7 @@ public class TextInterface {
                     System.out.println("6.) Unlink Instructor to Course");
                     System.out.println("7.) Register Student for Course");
                     System.out.println("8.) Unregister Student for Course");
+                    System.out.println("9.) Remove Course");
                     System.out.println("0.) Logout");
 
                     user_choice = scanner.nextInt();
@@ -240,6 +241,17 @@ public class TextInterface {
                             }
 
                             break;
+                        }
+
+                        case 9:
+                        {
+                            try {
+                                admin.DeleteCourse();
+                            }
+                            catch (SQLException e)
+                            {
+                                System.out.println(e);
+                            }
                         }
 
                         case 0: {

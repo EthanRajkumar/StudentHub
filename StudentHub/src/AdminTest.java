@@ -61,7 +61,7 @@ class AdminTest {
         // Query our in-memory database for the course we 'should' have inserted
         ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE CRN = 77777;");
 
-        // Assert the course's information was formatter and displayed correctly
+        // Assert the course's information was formatted and displayed correctly
         assertEquals(77777, rs.getInt("CRN"));
         assertEquals("Test Cases 101", rs.getString("TITLE"));
         assertEquals("BSCO", rs.getString("DEPARTMENT"));
@@ -134,6 +134,17 @@ class AdminTest {
     }
 
     @Test
-    void DeleteCourse() {
+    void DeleteCourse_Success() throws SQLException {
+        String simulatedInput = "50000\n";    //user input to be simulated
+        ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
+        System.setIn(testInputStream);  //set System.in as byte array
+
+        Admin tester = new Admin("", "", "", "", "", "");   //create admin to call on function
+
+        tester.DeleteCourse();
+
+        ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE CRN = 50000");
+        assertTrue(!rs.next());
+
     }
 }
