@@ -160,4 +160,93 @@ public class UserTest {
         assertTrue(output.contains("No matching courses found."));
     }
 
+    @Test
+    void SearchCourseByDept_Exists() {
+        String simulatedInput = "BSEE\n";    //user input to be simulated
+        ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
+        System.setIn(testInputStream);  //set System.in as byte array
+
+        // Create an output stream we can read programmatically
+        ByteArrayOutputStream testOutputStream = new ByteArrayOutputStream();
+        PrintStream origOut = System.out;
+        System.setOut(new PrintStream(testOutputStream));
+
+        //Create user to call function
+        User user = new Student("", "", "", 2025, "", "");
+        user.SearchCoursebyDept();
+
+        // Get output
+        String output = testOutputStream.toString();
+
+        // Restore original System.out
+        System.setOut(origOut);
+
+        // Print the output (for reference and debugging)
+        System.out.print(output);
+
+        //Assert that console outputs expected results
+        assertTrue(output.contains("What is the department of the course you're looking for?"));
+        assertTrue(output.contains("Department: BSEE Course: Circuit Theory Year: 2025"));
+        assertTrue(output.contains("Department: BSEE Course: Embedded Systems Year: 2025"));
+
+    }
+
+    @Test
+    void SearchCourseByDept_NotExists() {
+        String simulatedInput = "BSCO\n";    //user input to be simulated
+        ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
+        System.setIn(testInputStream);  //set System.in as byte array
+
+        // Create an output stream we can read programmatically
+        ByteArrayOutputStream testOutputStream = new ByteArrayOutputStream();
+        PrintStream origOut = System.out;
+        System.setOut(new PrintStream(testOutputStream));
+
+        //Create user to call function
+        User user = new Student("", "", "", 2025, "", "");
+        user.SearchCoursebyDept();
+
+        // Get output
+        String output = testOutputStream.toString();
+
+        // Restore original System.out
+        System.setOut(origOut);
+
+        // Print the output (for reference and debugging)
+        System.out.print(output);
+
+        //Assert that console outputs expected results
+        assertTrue(output.contains("What is the department of the course you're looking for?"));
+
+    }
+
+    @Test
+    void SearchCourseByDept_Invalid() {
+        String simulatedInput = "INVALID\nBSCO\n";    //user input to be simulated
+        ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
+        System.setIn(testInputStream);  //set System.in as byte array
+
+        // Create an output stream we can read programmatically
+        ByteArrayOutputStream testOutputStream = new ByteArrayOutputStream();
+        PrintStream origOut = System.out;
+        System.setOut(new PrintStream(testOutputStream));
+
+        //Create user to call function
+        User user = new Student("", "", "", 2025, "", "");
+        user.SearchCoursebyDept();
+
+        // Get output
+        String output = testOutputStream.toString();
+
+        // Restore original System.out
+        System.setOut(origOut);
+
+        // Print the output (for reference and debugging)
+        System.out.print(output);
+
+        //Assert that console outputs expected results
+        assertTrue(output.contains("That is not a valid department, try again."));
+
+    }
+
 }

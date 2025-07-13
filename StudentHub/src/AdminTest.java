@@ -1,9 +1,6 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.sqlite.SQLiteConnection;
-
-import static org.mockito.Mockito.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -11,6 +8,9 @@ import java.io.PrintStream;
 import java.sql.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
+
+//Initial research/setup of Junit, test case class, test case functions, user input simulation, in-memory database initialization, and test cases for DeleteCourse by Chris
+//Assistance in troubleshooting and finalizing test cases for CreateCourse by Ethan
 
 class AdminTest {
 
@@ -136,15 +136,15 @@ class AdminTest {
     @Test
     void DeleteCourse_Exists() throws SQLException {
         String simulatedInput = "50000\n";    //user input to be simulated
-        ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
+        testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
         System.setIn(testInputStream);  //set System.in as byte array
 
         Admin tester = new Admin("", "", "", "", "", "");   //create admin to call on function
 
         tester.DeleteCourse();
 
-        ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE CRN = 50000");
-        assertTrue(!rs.next());
+        ResultSet rs = SqlExecuter.RunQuery(url, "SELECT * FROM COURSE WHERE CRN = 50000;");
+        assertFalse(rs.next());
 
     }
 
@@ -174,6 +174,6 @@ class AdminTest {
         String errorMsg = "Course with this ID does not exist";
 
         // Test if we came across the message when running the simulated user input
-        assertEquals(true, lines.contains(errorMsg));
+        assertTrue(lines.contains(errorMsg));
     }
 }
