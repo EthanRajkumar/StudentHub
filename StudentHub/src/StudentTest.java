@@ -12,6 +12,9 @@ import java.sql.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
+//Initial research/setup of Junit, test case class, test case functions, user input simulation, in-memory database initialization by Chris
+//Test cases for Student done by Ethan
+
 class StudentTest {
 
     private InputStream originalSystemIn;
