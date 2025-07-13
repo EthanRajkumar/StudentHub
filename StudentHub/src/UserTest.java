@@ -20,6 +20,9 @@ public class UserTest {
 
     private static final String url = "jdbc:sqlite::memory:";
 
+    //SearchCourseByParam test cases by Matt
+    //SearchCourseByDept test cases by Chris
+
     @BeforeEach
     void setup() {
         // Keep original System.in and System.out streams
