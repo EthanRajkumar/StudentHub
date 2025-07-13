@@ -72,7 +72,7 @@ public class UserTest {
     }
 
     @Test
-    void SearchCourseByParam_Exist() {
+    void SearchCourseByParam_AllParam_Exist() {
         String simulatedInput = "Circuit Theory\nBSEE\nSpring\n2025";    //user input to be simulated
         ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
         System.setIn(testInputStream);  //set System.in as byte array
@@ -93,10 +93,71 @@ public class UserTest {
         System.setOut(origOut);
 
         // Print the output (for reference and debugging)
+        System.out.println("Test for choosing all of the parameters");
         System.out.print(output);
 
         // Test if we came across the message when running the simulated user input
         assertTrue(output.contains("Department: BSEE Course: Circuit Theory Semester: Spring Year: 2025"));
 
     }
+
+    @Test
+    void SearchCourseByParam_SomeParam_Exist() {
+        String simulatedInput = "Circuit Theory\n0\nSpring\n0";    //user input to be simulated
+        ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
+        System.setIn(testInputStream);  //set System.in as byte array
+
+        // Create an output stream we can read programmatically
+        ByteArrayOutputStream testOutputStream = new ByteArrayOutputStream();
+        PrintStream origOut = System.out;
+        System.setOut(new PrintStream(testOutputStream));
+
+        // Attempt a test given our simulated input
+        User user = new Student("", "", "", 2025, "", "");
+        user.SearchCoursebyParam();
+
+        // Get output and assert expected lines
+        String output = testOutputStream.toString();
+
+        // Restore original System.out
+        System.setOut(origOut);
+
+        // Print the output (for reference and debugging)
+        System.out.println("Test for only choosing some of the parameters");
+        System.out.print(output);
+
+        // Test if we came across the message when running the simulated user input
+        assertTrue(output.contains("Department: BSEE Course: Circuit Theory Semester: Spring Year: 2025"));
+
+    }
+
+    @Test
+    void SearchCourseByParam_NotExist() {
+        String simulatedInput = "Class Does Not Exist\n0\n0\n0";    //user input to be simulated
+        ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
+        System.setIn(testInputStream);  //set System.in as byte array
+
+        // Create an output stream we can read programmatically
+        ByteArrayOutputStream testOutputStream = new ByteArrayOutputStream();
+        PrintStream origOut = System.out;
+        System.setOut(new PrintStream(testOutputStream));
+
+        // Attempt a test given our simulated input
+        User user = new Student("", "", "", 2025, "", "");
+        user.SearchCoursebyParam();
+
+        // Get output and assert expected lines
+        String output = testOutputStream.toString();
+
+        // Restore original System.out
+        System.setOut(origOut);
+
+        // Print the output (for reference and debugging)
+        System.out.println("Test for filling out paramters that lead to no class existing");
+        System.out.print(output);
+
+        // Test if we came across the message when running the simulated user input
+        assertTrue(output.contains("No matching courses found."));
+    }
+
 }
