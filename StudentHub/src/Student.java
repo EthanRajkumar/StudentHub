@@ -40,14 +40,22 @@ public class Student extends User {
 	{
 		Scanner scanner = new Scanner(System.in);
 		String title = "";
-		System.out.println("Please enter the name of the course you wish to add (case sensitive): ");
-		title = scanner.nextLine();
-
-		String query = "SELECT * FROM COURSE WHERE TITLE = '" + title + "';";
-		ResultSet rs = SqlExecuter.RunQuery("", query);
+		ResultSet rs = null;
+		String query;
 
 		try
 		{
+			System.out.println("Please enter the name of the course you wish to add (case sensitive): ");
+			title = scanner.nextLine();
+
+			query = "SELECT * FROM COURSE WHERE TITLE = '" + title + "';";
+			rs = SqlExecuter.RunQuery("", query);
+
+			if (rs.getString("TITLE") == null) {
+				System.out.println("Invalid course ID detected.");
+				return false;
+			}
+
 			String students = rs.getString("STUDENTS");
 
 			if (students == null)
@@ -75,6 +83,7 @@ public class Student extends User {
 			}
 
 			students += " " + id;
+			students = students.trim();
 
 			query = "UPDATE COURSE SET STUDENTS = '" + students + "' WHERE TITLE = '" + title + "';";
 			SqlExecuter.RunUpdate("", query);
@@ -163,13 +172,23 @@ public class Student extends User {
 	{
 		Scanner scanner = new Scanner(System.in);
 		String title = "";
-		System.out.println("Please enter the name of the course you wish to drop (case sensitive): ");
-		title = scanner.nextLine();
 
-		String query = "SELECT * FROM COURSE WHERE TITLE = '" + title + "';";
-		ResultSet rs = SqlExecuter.RunQuery("", query);
+		ResultSet rs = null;
+		String query;
 
 		try {
+
+			System.out.println("Please enter the name of the course you wish to add (case sensitive): ");
+			title = scanner.nextLine();
+
+			query = "SELECT * FROM COURSE WHERE TITLE = '" + title + "';";
+			rs = SqlExecuter.RunQuery("", query);
+
+			if (rs.getString("TITLE") == null) {
+				System.out.println("Invalid course ID detected.");
+				return false;
+			}
+
 			String students = rs.getString("STUDENTS");
 
 			if (!students.contains(id)) {
@@ -189,7 +208,7 @@ public class Student extends User {
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Invalid course Id. Please try again.");
+			System.out.println(e);
 			return false;
 		}
 	}
