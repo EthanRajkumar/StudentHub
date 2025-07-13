@@ -62,6 +62,9 @@ public class InstructorTest {
         // Insert a sample course used to detect conflictions
         SqlExecuter.RunUpdate(url, "INSERT INTO COURSE VALUES (50000, 'Circuit Theory', 'BSEE', 9301015, 'Monday, Wednesday, Friday', " +
                 "'Spring, Summer', 2025, 4, 40, '20001', '10001 10002');");
+
+        SqlExecuter.RunUpdate(url, "INSERT INTO COURSE VALUES (50005, 'Embedded Systems', 'BSEE', 9301015, 'Monday, Wednesday, Friday', " +
+                "'Spring, Summer', 2025, 4, 40, '', '10001 10002');");
     }
 
     @AfterEach
@@ -102,8 +105,36 @@ public class InstructorTest {
     }
 
     @Test
-    void PrintCourseRoster_NotExistsDoesntTeach() {
+    void PrintCourseRoster_DoesntTeach() {
         String simulatedInput = "Embedded Systems\n";    //user input to be simulated
+        ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
+        System.setIn(testInputStream);  //set System.in as byte array
+
+        // Create an output stream we can read programmatically
+        ByteArrayOutputStream testOutputStream = new ByteArrayOutputStream();
+        PrintStream origOut = System.out;
+        System.setOut(new PrintStream(testOutputStream));
+
+        // Attempt a test given our simulated input
+        Instructor instructor = new Instructor("Joseph", "Fourier", "20001", "Full Prof.", 1820, "BSEE","fourierj"); //Instructor needs values so it knows what instructor is using the functions
+        instructor.PrintCourseRoster();
+
+        // Get output and assert expected lines
+        String output = testOutputStream.toString();
+
+        // Restore original System.out
+        System.setOut(origOut);
+
+        // Print the output (for reference and debugging)
+        System.out.print(output);
+
+        // Test if we came across the message when running the simulated user input
+        assertTrue(output.contains("That course does not exist or you do not teach this course."));
+    }
+
+    @Test
+    void PrintCourseRoster_NotExist() {
+        String simulatedInput = "Non-Existant Course\n";    //user input to be simulated
         ByteArrayInputStream testInputStream = new ByteArrayInputStream(simulatedInput.getBytes());  //user input in the form of a byte array
         System.setIn(testInputStream);  //set System.in as byte array
 
