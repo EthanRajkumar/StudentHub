@@ -126,6 +126,7 @@ public class InstructorTest {
         System.setOut(origOut);
 
         // Print the output (for reference and debugging)
+        System.out.println("Doesn't Teach Test");
         System.out.print(output);
 
         // Test if we came across the message when running the simulated user input
@@ -154,6 +155,7 @@ public class InstructorTest {
         System.setOut(origOut);
 
         // Print the output (for reference and debugging)
+        System.out.println("Not Exists Test");
         System.out.print(output);
 
         // Test if we came across the message when running the simulated user input
