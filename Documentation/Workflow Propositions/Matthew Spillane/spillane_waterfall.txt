@@ -2,22 +2,22 @@ Waterfall Model
 
 Requirements Definition:
 
-Requirements Engineering
-1. Feasibility Study
+Requirements Engineering 
+1. Feasibility Study (May 15)
 Do we have the technology available to create the system? Yes, we do. What do we need? 
 We need to have several classes, objects, methods, databases, and a user interface.
 Is there a budget for this project? No, we need nothing but time to complete this project.
 Conclusion is that the project is feasible.
-2. Requirement Elicitation
-This system is inspired from LeopardWeb and will behave similarily to it. 
-Therfore the requirements to fufill will similar to LeopardWeb as in...
+2. Requirement Elicitation (May 15)
+This system is inspired from LeopardWeb and will behave similarly to it. 
+Therefore the requirements to fulfill will similar to LeopardWeb as in...
 Students, Instructors, and Admins will be able to access similar modules but accomplish different things.
 User interface is easy to understand and interact with.
-3. Requirement Specification  //we should note that the program will also need a system in which users log in, so that they have access to their profile and thus correct methods/access -Chris
+3. Requirement Specification (May 15) 
 Student – can register, can see available courses and their own schedule.
 Instructor – can see available courses and their own course roster.
 Admin – can see everything, can edit courses/users/schedules.
-4. Requirement Validation
+4. Requirement Validation (May 15)
 
 
 |
@@ -25,21 +25,18 @@ Admin – can see everything, can edit courses/users/schedules.
 |
 V
 
-System and Software Design:
+System and Software Design: 
 
-Design
+Design (July 1)
 1. Architectural Design
 This project will features classes, objects, many functions, databases, and a user interface.
-2. Interface Design
+2. Interface Design (Jul 5)
 Interactable modules that will bring users to different areas, such as courses, schedules, profile, etc.
-3. Component Design
+3. Component Design (July 5)
 Classes: Student, Admin, Instructor (each has their own object)
 Functions: (differ per class/object) see course, see schedule, see available courses
-see course roster, edit course, edit user, edit schedule. // Admins should also be able to create and delete any of these objects. -Ethan
-User Interface: Modules for similar functions.
-4. Database Design  //I think database design can also pertain to the storage of available courses as well -Chris
-First Name, Last Name, ID
-
+see course roster, edit course, edit user, edit schedule. User Interface: Modules for similar functions.
+4. Database Design (July 5)
 |
 |
 |
@@ -47,15 +44,15 @@ V
 
 Implementation and Unit Testing:
 
-Implementation
-1. Components
+Implementation 
+1. Components (July 5)
 Make modules where users can interact with all the components of the system.
-2. Database
+2. Database (July 5)
 Make sure that the databases are being used correctly and are accurate.
-3. Interface
+3. Interface (Aug 5)
 Create an interface that users can see and interact with.
 Software Validation
-1. Component/Unit Testing
+1. Component/Unit Testing (July 13)
 Test all components/units.
 
 |
@@ -66,18 +63,18 @@ V
 Integration and System Testing:
 
 Software Validation
-2. System Testing
+2. System Testing (July 13)
 Test the entire system after integrating everything.
-3. Acceptance Testing
-Allow users to use the system as normal and aquire data from said users to fix anything.
+3. Acceptance Testing (July 13)
+Allow users to use the system as normal and acquire data from said users to fix anything.
 
 |
 |
 |
 V
 
-Operation and Maitenance:
+Operation and Maintenance:
 
 Maintenance
-1. Bug Fixes and Further Testing
+1. Bug Fixes and Further Testing (July 13)
 Fix any problems detected.
