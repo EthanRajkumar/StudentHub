@@ -1,22 +1,21 @@
-ELEC3225 – Applied Programming Concepts
-LeopardWeb Replication Project
-Ethan Rajkumar
-May 18th, 2025
+ELEC3225 – Applied Programming Concepts  
+LeopardWeb Replication Project  
+Ethan Rajkumar  
+May 18th, 2025  
 
-Integrational Process Proposition
+Integrational Process Proposition  
 
-Among many framework UI's including Windows Forms, SCiter stnds out as a modern HTML/CSS embedder framework, allowing web-development to coexist with a C++ backend. Using HTML/CSS would complicate the tech stack, but makes creating responsive UI much easier than it's code-based counterparts.
+(May 18)  
+Among many framework UI's including Windows Forms, SCiter stands out as a modern HTML/CSS embedder framework, allowing web-development to coexist with a C++ backend. Using HTML/CSS would complicate the tech stack, but makes creating responsive UI much easier than its code-based counterparts.  
 
-https://sciter.com/
+https://sciter.com/  
 
-//Interesting. I don't really have any experience in making GUIs so it'll probably be up to you to decide how we want to implement it -Chris
+(May 20)  
+For databases, given that course ELEC 3225 will cover SQL, two options, MySQL and SQLite stand out as popular SQL integration frameworks that are used to store local databases, supporting encryption methods as well for secure storage through third-party libraries such as SQLCipher.  
 
-For databases, given that course ELEC 3225 will cover SQL, two options, MySQL and SQLite stand out as popular SQL integration frameworks that are used to store local databases, supporting encryption methods as well for secure storage through third-party libraries such as SQLCipher.
-//Seems like SQLite is what we're generally learning, so maybe that is what we should use for SQL integration? -Matthew
+https://www.mysql.com/  
+https://sqlite.org/cintro.html  
+https://github.com/sqlcipher/sqlcipher  
 
-https://www.mysql.com/
-https://sqlite.org/cintro.html
-https://github.com/sqlcipher/sqlcipher
-
-
-
+(May 24)  
+Tool selection finalized — SCiter chosen for UI, SQLite + SQLCipher for secure local storage.  
