@@ -1,4 +1,5 @@
 Requirements Definition
+(May 18 – May 24)
 -project is feasible, all resources (IDE, repository, libraries, etc.) should be free/pre-acquired
 -program needs classes (parent + children), libraries, database, GUI
 -analyze and note functionalities/features of LeopardWeb that should be implemented
@@ -10,23 +11,24 @@ Requirements Definition
 -printing/viewing of users should include all attributes (first + last names, ID) and the type of user (student/instructor/admin)
 
 Component Analysis
+(May 25 – June 5)
 -Visual Studio/VS Code: create and compile code (course content)
 -SQL Database: create and integrate database for use in program (course content)
--GUI library/software: gtkmm/Qt/wxWidgets/Dear ImuGui libraries for C++ (https://www.geeksforgeeks.org/cpp-gui-    programming/), SceneBuilder for Java (compsci 2 course content) to create GUI for programd
+-GUI library/software: gtkmm/Qt/wxWidgets/Dear ImuGui libraries for C++ (https://www.geeksforgeeks.org/cpp-gui-programming/), SceneBuilder for Java (compsci 2 course content) to create GUI for programd
 -GitHub repository: collaborate on code, commit changes (course content)
 
-
 Requirements Definition
+(June 6 – June 10)
 -project is feasible
 -program classes created inside code within IDE, libraries imported into code, database integrated into program, GUI designed to provide convenient/user-friendly UI
 -analyze and note functionalities/features of LeopardWeb that should be implemented
-//while there are things that we are required to do, from our observations we should see if there are additional elements we wish to implement or if there are ways to implement things easier than we initially thought -Matthew
 -all user structures (attributes, methods) set up in class files
 
 System Design (with reuse)
+(June 11 – June 17)
 -create and compile institutional course menu program code in IDE with all necessary classes and main method logic
 -import necessary libraries into code
-// Where will we store the database? Will it be kept locally, or be hosted via web? Web hosting would open up more security options, at the cost of complicating our tech stack. -Ethan
 
 Design and Implementation
+(June 18 – July 5)
 -collaborate on code via GitHub repository with team, committing and documenting changes
